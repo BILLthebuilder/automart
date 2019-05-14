@@ -66,15 +66,15 @@ ul {
     list-style-type: none;
 }
 
-button a {
-    color: #fff;
-}
-
+/* #search{
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 5px;
+} */
 .make,
 .model,
 .year,
-.price
- {
+.price {
     display: flex;
     align-items: center;
 }
@@ -84,40 +84,47 @@ button a {
     margin: 1em;
     justify-content: center;
 }
-.make{
+
+.make {
     margin: 20px;
 }
 
 .year-price {
     display: flex;
     margin: 1em;
-    justify-content:center;
+    justify-content: center;
 }
-.year{
+
+.year {
     margin: 20px;
 }
+
 select.year-from {
     margin: 10px;
 }
+
 select.price-to {
     margin: 10px;
 }
-.searchnow{
+
+.searchnow {
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
 }
+
 form {
     background-color: #532380;
 
 }
 
-div>h1{
+div>h1 {
     color: #f2f2f2;
     display: flex;
     justify-content: center;
     padding-top: 10px;
 }
+
 form select {
     padding: 0 20px;
     line-height: 50px;
@@ -152,50 +159,59 @@ form input[type="button"]:hover {
 }
 
 /*******Card styles*******/
-
-#meetups-list h2 {
-    text-align: center;
-}
-
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: center; */
-    justify-content: space-evenly;
-    width: 80%;
-    margin: auto;
-}
-
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    width: 150px;                 /* Set width of cards */
+    display: flex;                /* Children use Flexbox */
+    flex-direction: column;       /* Rotate Axis */
+    border: 1px solid #EF9A9A;    /* Set up Border */
+    border-radius: 4px;           /* Slightly Curve edges */
+    overflow: hidden;             /* Fixes the corners */
+    margin: 10px;                  /* Add space between cards */
+  }
+  
+  .card-header {
+    color: #D32F2F;
     text-align: center;
-    padding: 13px;
-    margin-bottom: 13px;
-    flex: 0 1 24%;
-    /* border: 1px lightgray;
-    border-radius: 5px 5px 0 0; */
-    background: #fff;
-}
-
-.title {
-    color: grey;
-    font-size: 18px;
-}
-
-.view-meetup {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom: 1px solid #EF9A9A;
+    background-color: #FFEBEE;
+    padding: 5px 10px;
+  }
+  
+  .card-main {
+    display: flex;              
+    flex-direction: column;     /* Rotate Axis to Vertical */
+    justify-content: center;    /* Group Children in Center */
+    align-items: center;        /* Group Children in Center (on cross axis) */
+    padding: 15px 0;            /* Add padding to the top/bottom */
+  }
+  
+  .material-icons {
+    font-size: 36px;
+    color: #D32F2F;
+    margin-bottom: 5px;
+  }
+  
+  .main-description {
+    color: #D32F2F;
+    font-size: 12px;
     text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
+  }
+  div>h2{
+      display: flex;
+      padding-top: 10px;
+      flex: 1;
+      margin-left: 10%;
+  }
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    flex-wrap: wrap;
+    width: 80%;
 }
-
 input[type="button"]:hover,
 a:hover {
     opacity: 0.9;
