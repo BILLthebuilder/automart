@@ -30,7 +30,10 @@ footer {
     justify-content: center;
     background: #260957;
     color: #f2f2f2;
+}
 
+.copyright p {
+    padding: 10px;
 }
 
 .nav {
@@ -139,8 +142,6 @@ form select {
 
 form input[type="button"] {
     padding: 0 20px;
-    display: inline-block;
-    font-size: 16px;
     text-align: center;
     line-height: 30px;
     background-color: #f13a59;
@@ -151,7 +152,7 @@ form input[type="button"] {
     outline: 0;
     height: 30px;
     width: 10%;
-
+    font-size: 14pt;
 }
 
 form input[type="button"]:hover {
@@ -160,58 +161,62 @@ form input[type="button"]:hover {
 
 /*******Card styles*******/
 .card {
-    width: 150px;                 /* Set width of cards */
-    display: flex;                /* Children use Flexbox */
-    flex-direction: column;       /* Rotate Axis */
-    border: 1px solid #EF9A9A;    /* Set up Border */
-    border-radius: 4px;           /* Slightly Curve edges */
-    overflow: hidden;             /* Fixes the corners */
-    margin: 10px;                  /* Add space between cards */
-  }
-  
-  .card-header {
-    color: #D32F2F;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #532380;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.card-header {
+    color: #f2f2f2;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
-    border-bottom: 1px solid #EF9A9A;
-    background-color: #FFEBEE;
+    border-bottom: 1px solid #532380;
+    background-color: #532380;
     padding: 5px 10px;
-  }
-  
-  .card-main {
-    display: flex;              
-    flex-direction: column;     /* Rotate Axis to Vertical */
-    justify-content: center;    /* Group Children in Center */
-    align-items: center;        /* Group Children in Center (on cross axis) */
-    padding: 15px 0;            /* Add padding to the top/bottom */
-  }
-  
-  .material-icons {
+}
+
+.card-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+
+}
+
+.material-icons {
     font-size: 36px;
-    color: #D32F2F;
+    color: #260957;
     margin-bottom: 5px;
-  }
-  
-  .main-description {
-    color: #D32F2F;
+}
+
+.main-description {
+    color: #260957;
     font-size: 12px;
     text-align: center;
-  }
-  div>h2{
-      display: flex;
-      padding-top: 10px;
-      flex: 1;
-      margin-left: 10%;
-  }
-ul{
+}
+
+div>h2 {
+    display: flex;
+    padding-top: 10px;
+    flex: 1;
+    margin-left: 10%;
+}
+
+ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
+    margin-left: 5%;
     flex-wrap: wrap;
-    width: 80%;
+    width: 90%;
 }
+
 input[type="button"]:hover,
 a:hover {
     opacity: 0.9;
