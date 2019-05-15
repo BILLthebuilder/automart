@@ -7,8 +7,7 @@
 .email,
 .password1,
 .password2,
-.regbutton
- {
+.regbutton {
     display: flex;
     padding: 20px;
     justify-content: center;
@@ -51,22 +50,25 @@ form input[type="submit"] {
     height: 30px;
     font-size: 14pt;
 }
-input[type="submit"]:active{
+
+input[type="submit"]:active {
     transform: translateY(4px);
 }
 
-@media only screen and (max-width: 600px){
-    .signup form input{
+@media only screen and (max-width: 600px) {
+    .signup form input {
         width: 100%;
     }
- }
- @media only screen and (max-width: 500px){
-    .signup form input{
+}
+
+@media only screen and (max-width: 500px) {
+    .signup form input {
         width: 100%;
     }
- }
- @media only screen and (max-width: 340px){
-    .signup form input{
+}
+
+@media only screen and (max-width: 340px) {
+    .signup form input {
         width: 100%;
     }
- }
+}
