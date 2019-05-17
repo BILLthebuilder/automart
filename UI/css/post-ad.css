@@ -1,0 +1,60 @@
+.make_model,
+.series-year,
+.mileage-body,
+.trans-cond,
+.duty-price {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction:column
+}
+.body{
+    padding-right:13px;
+}
+
+.m_ake,
+.m_odel,
+.series,
+.year2,
+.mileage,
+.body .transmission,
+.condition,
+.duty,
+.price {
+    padding: 5px;
+}
+
+input[type="text"] {
+    height: 30px !important;
+    width: 70% !important;
+}
+
+input[type="text"].price_fill {
+    width: 50% !important;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.curr {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.land {
+    height:100vh;
+}
+
+.photos {
+    color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+}
+
+.main-description,
+.material-icons {
+    color: #f2f2f2 !important;
+}
+
+.card {
+    border: 2px solid #f2f2f2 !important;
+}
