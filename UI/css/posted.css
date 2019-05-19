@@ -8,9 +8,12 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    width: 60%;
-    margin-right: 20%;
+    width: 70%;
+    margin-right: 0%;
     margin-left: 20%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .ad-heading,
@@ -20,19 +23,111 @@
     display: flex;
 }
 
-.ad-overview,
-dl {
-    display: flex;
+.ad-heading,
+.ad-price,
+.ad-pics {
+    color: #f2f2f2;
+    background-color: #532380;
+    padding: 5px;
 }
 
+.ad-heading,
+.ad-price {
+    flex-direction: column;
+
+}
+
+.ad-pics {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.ad-heading {
+    border-style: solid;
+    border-color: #532380;
+    border-width: 0.2px;
+}
+
+.ad-overview,
+.ad-features,
+.ad-feature-details,
 dl {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.ad-overview-features {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.ad-overview {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 30%;
+    margin-bottom: 3%;
 }
 
 dt {
     font-weight: bold;
+    margin-bottom: 2px;
 }
 
-dt+dd {
-    display: flex;
+dd,
+i {
+    margin-left: 0px;
+    width: 100%;
+}
+
+.material-icons {
+    color: #f2f2f2;
+}
+
+.ad-feature-details li {
+    margin-left: 0px;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.ad-details h2 {
+    background-color: #532380;
+    color: #f2f2f2;
+    border-style: solid;
+    border-color: #532380;
+    border-width: 0.2px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 5px;
+}
+
+.ad-details p {
+    font-size: 11px;
+    padding-left: 5px;
+}
+
+.ad-features h3 {
+    margin-left: 5%;
+}
+
+.ad-feature-details {
+    list-style-type: none;
+    margin-left: 5%;
+}
+
+.ad-feature-details li::before {
+    content: "\2714";
+    color: #532380;
+    font-weight: bold;
+    display: inline-flex;
+    width: 1em;
+    margin-left: -1em;
 }
