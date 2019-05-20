@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/posted.css">
+    <link rel="stylesheet" href="../css/edit-ad.css">
     <title>corolla</title>
 </head>
 
@@ -25,15 +26,15 @@
             </ul>
         </nav>
     </header>
-    <div id="details-seller" contenteditable="true">
+    <div id="details-seller">
         <section id="advertisement-details">
             <div class="ad-details">
-                <h2>Details</h2>
-                <div class="ad-heading">
+                <h2>Edit the ad Details</h2>
+                <div class="ad-heading" contenteditable="true">
                     <h2><span>2017 Toyota</span></h2>
                     <p><span>added 3 days ago</span></p>
                 </div>
-                <div class="ad-price">
+                <div class="ad-price" contenteditable="true">
                     <h2><span>Ksh 4,500,000</span></h2>
                     <p><span>NEGOTIABLE</span></p>
                 </div>
@@ -64,54 +65,54 @@
                         <dl>
                             <div class="col">
                                 <dt>Mileage(KM)</dt>
-                                <dd>4300</dd>
+                                <dd contenteditable="true">4300</dd>
                             </div>
-                            <div class="col">
+                            <div class="col" >
                                 <dt>Condition</dt>
-                                <dd>Locally used</dd>
+                                <dd contenteditable="true">Locally used</dd>
                             </div>
-                            <div class="col">
+                            <div class="col" >
                                 <dt>Body Type</dt>
-                                <dd>4 wheel drives</dd>
+                                <dd contenteditable="true">4 wheel drives</dd>
                             </div>
-                            <div class="col">
+                            <div class="col" >
                                 <dt>Colour</dt>
-                                <dd>Black</dd>
+                                <dd contenteditable="true">Black</dd>
                             </div>
 
-                            <div class="col">
+                            <div class="col" >
                                 <dt>Fuel</dt>
-                                <dd>Diesel</dd>
+                                <dd contenteditable="true">Diesel</dd>
                             </div>
 
                             <div class="col">
                                 <dt>Transmission</dt>
-                                <dd>Automatic</dd>
+                                <dd contenteditable="true">Automatic</dd>
                             </div>
                             <div class="col">
                                 <dt>Duty Type</dt>
-                                <dd>Paid</dd>
+                                <dd contenteditable="true">Paid</dd>
                             </div>
                             <div class="col">
                                 <dt>Interior</dt>
-                                <dd>Leather</dd>
+                                <dd contenteditable="true">Leather</dd>
                             </div>
 
                             <div class="col">
                                 <dt>Engine size</dt>
-                                <dd>2993</dd>
+                                <dd contenteditable="true">2993</dd>
                             </div>
 
                             <div class="col">
                                 <dt>Year</dt>
-                                <dd>2017</dd>
+                                <dd contenteditable="true">2017</dd>
                             </div>
 
                         </dl>
                     </div>
                     <div class="ad-features">
                         <h3>Features</h3>
-                        <ul class="ad-feature-details">
+                        <ul class="ad-feature-details" contenteditable="true">
                             <div class="col">
                                 <li>Air Conditioning</li>
                             </div>
@@ -180,37 +181,9 @@
                         </ul>
                     </div>
                 </div>
-
-            </div>
-            <div class="sharing-links">
-
             </div>
         </section>
-        <hr class="separator">
-        <section id="contact-seller-form">
-            <div class="contact-seller">
-                <h2>Contact Seller</h2>
-                <div class="seller-button">
-                    <button>Call Seller</button>
-                </div>
-                <hr>
-                <h2><span>Request Call Back</span></h2>
-                <form action="" class="buyer-details">
-                    <div class="buyer-name">
-                        <input type="text" name="buyer-name" placeholder="Name">
-                    </div>
-                    <div class="buyer-number">
-                        <input type="text" name="buyer-number" placeholder="Number">
-                    </div>
-                    <div class="buyer-email">
-                        <input type="email" name="buyer-email" placeholder="Email">
-                    </div>
-                    <div class="buyer-submit">
-                        <input type="submit" value="Call me back">
-                    </div>
-                </form>
-            </div>
-        </section>
+        <button>Save</button>
     </div>
 
     <div class="sticky">
