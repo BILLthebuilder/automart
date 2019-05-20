@@ -1,0 +1,19 @@
+.ad-overview-features {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+.ad-heading h2::before,
+.ad-price h2::before,
+.ad-price p ::before,
+.ad-overview dd::before,
+.ad-feature-details li::before {
+    content: "\270D"!important;
+    color: black !important;
+    font-weight: bold !important;
+    display: inline-flex !important;
+    width: 1em !important;
+    margin-left: -1em !important;
+}
