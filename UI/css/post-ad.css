@@ -6,10 +6,11 @@
     display: flex;
     padding: 10px;
     align-items: center;
-    flex-direction:column
+    flex-direction: column
 }
-.body{
-    padding-right:13px;
+
+.body {
+    padding-right: 13px;
 }
 
 .m_ake,
@@ -41,7 +42,7 @@ input[type="text"].price_fill {
 }
 
 .land {
-    height:100vh;
+    height: 100vh;
 }
 
 .photos {

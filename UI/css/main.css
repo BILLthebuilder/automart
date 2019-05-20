@@ -208,7 +208,7 @@ form input[type="button"]:hover {
     margin-left: 10%;
 }
 
-ul {
+.featured-cards {
     display: flex;
     justify-content: center;
     align-items: center;
