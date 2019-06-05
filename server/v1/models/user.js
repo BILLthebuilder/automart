@@ -1,6 +1,6 @@
 class User {
-    constructor() {
-        this.users = [];
+    constructor(users = []) {
+        this.users = users;
     }
 
     create(email, firstName, lastName, password, address, isAdmin) {
@@ -17,10 +17,5 @@ class User {
         return newUser;
     }
 }
-// const John = new User();
-// John.create('john@gmail.com', 'John', 'Omondi', 'wjnjdasj', '233nairobi', true);
-// John.create('pat@gmail.com', 'patrick', 'Omondi', 'wjnjdasj', '233nairobi', false);
-// John.create('stacy@gmail.com', 'John', 'Omondi', 'wjnjdasj', '233nairobi', true);
-// console.log(John);
 
 export default new User();
