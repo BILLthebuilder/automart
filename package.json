@@ -4,9 +4,9 @@
     "description": "an api for an online automobile marketplace",
     "main": "server.js",
     "scripts": {
-        "test": "./node_modules/.bin/mocha --require @babel/register ./server/v1/tests || true",
+        "test": "./node_modules/.bin/mocha --require @babel/register ./server/v1/tests",
         "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
-        "start": "babel-node server.js"
+        "start": "babel-node app.js"
     },
     "repository": {
         "type": "git",
@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/BILLthebuilder/automart#readme",
     "dependencies": {
+        "@hapi/joi": "^15.0.3",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1"
     },
