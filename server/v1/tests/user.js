@@ -3,7 +3,7 @@
 import chai from 'chai';
 import 'chai/register-expect';
 import chaihttp from 'chai-http';
-import signup from '../../../app';
+import signupRoute from '../../../app';
 
 chai.use(chaihttp);
 describe('User registration', () => {
@@ -12,12 +12,12 @@ describe('User registration', () => {
         email: 'billkariri@gmail.com',
         first_name: 'Bill',
         last_name: 'Kariri',
-        password: 'bill@Kariri',
+        password: 'bill@Kariri123',
         address: '80100',
         is_admin: true
     };
     it('should create a user', done => {
-        chai.request(signup)
+        chai.request(signupRoute)
             .post('/api/v1/auth/signup')
             .send(user)
             .end((err, res) => {
@@ -40,7 +40,7 @@ describe('User registration', () => {
                     .to.have.a.property('address')
                     .and.to.be.a('string');
                 expect(res.body.data)
-                    .to.have.a.property('is_admin')
+                    .to.have.a.property('isAdmin')
                     .and.to.be.a('boolean');
             });
         done();
