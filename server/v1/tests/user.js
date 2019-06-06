@@ -20,23 +20,20 @@ describe('User registration', () => {
             .post('/api/v1/auth/signup')
             .send(user)
             .end((err, res) => {
-                expect(res.body).to.have.status(201);
-                expect(res.body).to.be.a('object');
-                expect(res.body.data).to.have.a.property('id');
+                expect(res.body)
+                    .to.have.status(201)
+                    .and.to.be.an('object');
                 expect(res.body.data)
-                    .to.have.a.property('first_name')
-                    .and.to.be.a('string');
-                expect(res.body.data)
-                    .to.have.a.property('last_name')
-                    .and.to.be.a('string');
-                expect(res.body.data)
-                    .to.have.a.property('email')
-                    .and.to.be.a('string');
-                expect(res.body.data)
-                    .to.have.a.property('address')
-                    .and.to.be.a('string');
-                expect(res.body.data)
-                    .to.have.a.property('isAdmin')
+                    .to.have.a.property('id')
+                    .and.to.have.a.property('first_name')
+                    .and.to.be.a('string')
+                    .and.to.have.a.property('last_name')
+                    .and.to.be.a('string')
+                    .and.to.have.a.property('email')
+                    .and.to.be.a('string')
+                    .and.to.have.a.property('address')
+                    .and.to.be.a('string')
+                    .and.to.have.a.property('isAdmin')
                     .and.to.be.a('boolean');
             });
     });
