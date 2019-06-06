@@ -8,7 +8,6 @@ import signupRoute from '../../../app';
 chai.use(chaihttp);
 describe('User registration', () => {
     const user = {
-        id: 1,
         email: 'billkariri@gmail.com',
         first_name: 'Bill',
         last_name: 'Kariri',
@@ -16,13 +15,13 @@ describe('User registration', () => {
         address: '80100',
         is_admin: true
     };
-    it('should create a user', done => {
+    it('should create a user', () => {
         chai.request(signupRoute)
             .post('/api/v1/auth/signup')
             .send(user)
             .end((err, res) => {
                 expect(res.body).to.have.status(201);
-                expect(res.body).to.be.an('object');
+                expect(res.body).to.be.a('object');
                 expect(res.body.data).to.have.a.property('id');
                 expect(res.body.data)
                     .to.have.a.property('first_name')
@@ -34,59 +33,11 @@ describe('User registration', () => {
                     .to.have.a.property('email')
                     .and.to.be.a('string');
                 expect(res.body.data)
-                    .to.have.a.property('email')
-                    .and.to.be.a('string');
-                expect(res.body.data)
                     .to.have.a.property('address')
                     .and.to.be.a('string');
                 expect(res.body.data)
                     .to.have.a.property('isAdmin')
                     .and.to.be.a('boolean');
             });
-        done();
     });
 });
-
-// "use strict";
-
-// var _chai = _interopRequireDefault(require("chai"));
-
-// require("chai/register-expect");
-
-// var _chaiHttp = _interopRequireDefault(require("chai-http"));
-
-// var _app = _interopRequireDefault(require("../../../app"));
-
-// function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// /* eslint-disable import/no-extraneous-dependencies */
-
-// /* eslint-disable no-undef */
-// _chai.default.use(_chaiHttp.default);
-
-// describe('User registration', function () {
-//   var user = {
-//     id: 1,
-//     email: 'billkariri@gmail.com',
-//     first_name: 'Bill',
-//     last_name: 'Kariri',
-//     password: 'bill@Kariri123',
-//     address: '80100',
-//     is_admin: true
-//   };
-//   it('should create a user', function (done) {
-//     _chai.default.request(_app.default).post('/api/v1/auth/signup').send(user).end(function (err, res) {
-//       expect(res.body).to.have.status(201);
-//       expect(res.body).to.be.an('object');
-//       expect(res.body.data).to.have.a.property('id');
-//       expect(res.body.data).to.have.a.property('first_name').and.to.be.a('string');
-//       expect(res.body.data).to.have.a.property('last_name').and.to.be.a('string');
-//       expect(res.body.data).to.have.a.property('email').and.to.be.a('string');
-//       expect(res.body.data).to.have.a.property('email').and.to.be.a('string');
-//       expect(res.body.data).to.have.a.property('address').and.to.be.a('string');
-//       expect(res.body.data).to.have.a.property('isAdmin').and.to.be.a('boolean');
-//     });
-
-//     done();
-//   });
-// });
