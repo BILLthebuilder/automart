@@ -1,21 +1,34 @@
-class User {
-    constructor(users = []) {
-        this.users = users;
+/* eslint-disable class-methods-use-this */
+const users = [
+    {
+        id: 0,
+        email: '',
+        first_name: '',
+        last_name: '',
+        password: '',
+        address: '',
+        isAdmin: true
     }
+];
 
-    create(email, firstName, lastName, password, address, isAdmin) {
-        const newUser = {
-            id: this.users.length + 1,
-            email,
-            first_name: firstName,
-            last_name: lastName,
-            password,
-            address,
-            isAdmin
-        };
-        this.users.push(newUser);
-        return newUser;
-    }
-}
+export default users;
 
-export default new User();
+// "use strict";
+
+// Object.defineProperty(exports, "__esModule", {
+//   value: true
+// });
+// exports.default = void 0;
+
+// /* eslint-disable class-methods-use-this */
+// var users = [{
+//   id: 0,
+//   email: '',
+//   first_name: '',
+//   last_name: '',
+//   password: '',
+//   address: '',
+//   isAdmin: true
+// }];
+// var _default = users;
+// exports.default = _default;
