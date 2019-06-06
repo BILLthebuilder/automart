@@ -1,4 +1,7 @@
 # automart-UI
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d2ad60ed2eb04e6283d982d4799d649e)](https://app.codacy.com/app/BILLthebuilder/automart?utm_source=github.com&utm_medium=referral&utm_content=BILLthebuilder/automart&utm_campaign=Badge_Grade_Dashboard)
+
 Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With Auto Mart, users can sell their cars or buy from trusted dealerships or private sellers.
 
 This app is built using html, css and Javascript
