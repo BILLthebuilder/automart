@@ -13,7 +13,7 @@ chai.use(asserttype);
 describe('Advertisements', () => {
     const ad = {
         Data: {
-            id: 'sdfjfjkdsfjkerjffkfdksad3',
+            id: 1,
             owner: 'John',
             email: 'email@email.com',
             createdOn: '01/01/2019',
@@ -24,39 +24,37 @@ describe('Advertisements', () => {
             status: 'avalable/sold'
         }
     };
-    it('Should be able to create a car sale ad', () => {
+    it('A user Should be able to create a car sale ad', () => {
         chai.request(app)
-            .post('/car/')
+            .post('/api/v1/car/')
             .send(ad)
             .end((err, res) => {
                 expect(res.body)
                     .to.have.a.status(201)
                     .and.to.be.an('object');
-                expect(res.body.Data)
-                    .to.have.a.property('id')
-                    .and.to.be.a('string');
+                expect(res.body.Data).to.have.a.property('id');
                 expect(res.body.Data)
                     .to.have.a.property('owner')
                     .and.to.be.a('string');
-                expect(res.body.data)
+                expect(res.body.Data)
                     .to.have.a.property('email')
                     .and.to.be.a('string');
-                expect(res.body.data)
+                expect(res.body.Data)
                     .to.have.a.property('createdOn')
                     .and.to.be.a('string');
-                expect(res.body.data)
+                expect(res.body.Data)
                     .to.have.a.property('manufacturer')
                     .and.to.be.a('string');
-                expect(res.body.data)
+                expect(res.body.Data)
                     .to.have.a.property('model')
                     .and.to.be.a('string');
-                expect(res.body.data)
+                expect(res.body.Data)
                     .to.have.a.property('price')
                     .and.to.be.a('number');
-                expect(res.body.data)
+                expect(res.body.Data)
                     .to.have.a.property('state')
                     .and.to.be.a('string');
-                expect(res.body.data)
+                expect(res.body.Data)
                     .to.have.a.property('status')
                     .and.to.be.a('string');
             });
