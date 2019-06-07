@@ -11,7 +11,7 @@ chai.use(asserttype);
 describe('User registration', () => {
     const user = {
         Data: {
-            id: 'fhwehwbvsdgdvcvgsdvsn23',
+            id: 1,
             firstName: 'John',
             email: 'johndoe@gmail.com',
             lastName: 'Doe',
