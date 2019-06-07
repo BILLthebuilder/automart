@@ -13,7 +13,7 @@ class Ads {
             createdOn: moment().format('dddd, MMMM Do YYYY, h:mm:ss a'),
             manufacturer: data.manufacturer || '',
             model: data.model || '',
-            price: data.price || '',
+            price: 4.567,
             state: data.state || '',
             status: data.status || ''
         };
