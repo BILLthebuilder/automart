@@ -1,10 +1,9 @@
-import express from 'express';
-import signup from '../controllers/signup';
+import { Router } from 'express';
+import RegisterUser from '../controllers/signup';
 
-const signupRoute = express.Router();
-signupRoute.use(express.json());
-signupRoute.use(express.urlencoded({ extended: false }));
+const routes = Router();
 
-signupRoute.post('/api/v1/auth/signup', signup.newUser);
+routes.post('/api/v1/auth/signup', RegisterUser.create);
+// routes.post('/api/v1/auth/signin', RegisterUser.create);
 
-export default signupRoute;
+export default routes;
