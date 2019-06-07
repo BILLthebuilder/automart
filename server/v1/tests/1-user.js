@@ -12,11 +12,11 @@ describe('User registration', () => {
     const user = {
         Data: {
             id: 'fhwehwbvsdgdvcvgsdvsn23',
-            firstName: 'Bill',
-            email: 'billkariri@gmail.com',
-            lastName: 'Kariri',
-            password: 'bill@Kariri123',
-            address: '80100',
+            firstName: 'John',
+            email: 'johndoe@gmail.com',
+            lastName: 'Doe',
+            password: 'johndoe@123',
+            address: '80100122',
             isAdmin: true
         }
     };
