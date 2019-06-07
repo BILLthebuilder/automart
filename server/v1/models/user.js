@@ -1,5 +1,3 @@
-import uuid from 'uuid';
-
 class User {
     constructor() {
         this.users = [];
@@ -7,7 +5,7 @@ class User {
 
     create(data) {
         const newUser = {
-            id: uuid.v4(),
+            id: this.users.length + 1,
             firstName: data.firstName || '',
             lastName: data.lastName || '',
             email: data.email || '',
