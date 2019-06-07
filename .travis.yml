@@ -6,7 +6,3 @@ cache:
     directories:
         - 'node_modules'
 
-after_success:
-    - coveralls
-    - codeclimate-test-reporter
-    - codecov --token=186f1c2b-4731-41ee-9784-a1168bdcb62a
