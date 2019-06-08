@@ -5,6 +5,7 @@
     "main": "app.js",
     "scripts": {
         "start": "node_modules/.bin/nodemon app.js --exec babel-node",
+        "models": "babel-node ./server/v1/models/ads.js",
         "test": "nyc --reporter=html --reporter=text mocha --exit --require @babel/register ./server/v1 --recursive",
         "coverage": "nyc report --reporter=text-lcov | coveralls"
     },
