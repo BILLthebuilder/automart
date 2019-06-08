@@ -69,4 +69,11 @@ describe('Advertisements', () => {
                 expect(res.body.Data).to.be.an('array');
             });
     });
+    it('A user should be able to view a specific car ad', () => {
+        chai.request(app)
+            .get(`/api/v1/car/${id}`)
+            .end((err, res) => {
+                expect(res.body).to.have.a.status(200);
+            });
+    });
 });
