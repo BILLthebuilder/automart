@@ -76,4 +76,12 @@ describe('Advertisements', () => {
                 expect(res.body).to.have.a.status(200);
             });
     });
+    it('A user should be able to delete a specific car ad', () => {
+        chai.request(app)
+            .delete('/api/v1/car/:id')
+            .end((err, res) => {
+                expect(res.body).to.have.a.status(204);
+                expect(res.body.Data).to.be.a('string');
+            });
+    });
 });
