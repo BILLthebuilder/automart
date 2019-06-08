@@ -24,5 +24,10 @@ class Ads {
     getAllAds() {
         return this.ads;
     }
+
+    getSpecific(id) {
+        const specific = this.ads.find(advert => advert.id === id);
+        return specific;
+    }
 }
 export default new Ads();
