@@ -29,5 +29,12 @@ class Ads {
         const specific = this.ads.find(advert => advert.id === id);
         return specific;
     }
+
+    deleteSpecificAd(id) {
+        const singleAd = this.getSpecific(id);
+        const index = this.ads.indexOf(singleAd);
+        this.ads.splice(index, 1);
+        return {};
+    }
 }
 export default new Ads();
