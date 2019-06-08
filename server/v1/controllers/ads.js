@@ -21,6 +21,13 @@ const AdvertHandler = {
             status: 200,
             Data: specific
         });
+    },
+    deleteSpecific(req, res) {
+        const deleted = Ads.deleteSpecificAd(parseInt(req.params.id, 10));
+        return res.status(204).json({
+            status: 204,
+            Data: deleted
+        });
     }
 };
 
