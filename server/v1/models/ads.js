@@ -20,5 +20,9 @@ class Ads {
         this.ads.push(newAd);
         return newAd;
     }
+
+    getAllAds() {
+        return this.ads;
+    }
 }
 export default new Ads();
