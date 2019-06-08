@@ -14,6 +14,13 @@ const AdvertHandler = {
             status: 200,
             Data: ads
         });
+    },
+    viewSpecific(req, res) {
+        const specific = Ads.getSpecific(parseInt(req.params.id, 10));
+        return res.status(200).json({
+            status: 200,
+            Data: specific
+        });
     }
 };
 
