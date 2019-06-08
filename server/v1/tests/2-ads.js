@@ -61,36 +61,12 @@ describe('Advertisements', () => {
     });
     it('A user should be able to view all posted ads', () => {
         chai.request(app)
-            .get('/api/v1/car')
+            .get('/api/v1/cars/')
             .end((err, res) => {
                 expect(res.body)
                     .to.have.a.status(200)
                     .and.to.be.an('object');
-                expect(res.body.Data).to.have.a.property('id');
-                expect(res.body.Data)
-                    .to.have.a.property('owner')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('email')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('createdOn')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('manufacturer')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('model')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('price')
-                    .and.to.be.a('number');
-                expect(res.body.Data)
-                    .to.have.a.property('state')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('status')
-                    .and.to.be.a('string');
+                expect(res.body.Data).to.be.an('array');
             });
     });
 });
