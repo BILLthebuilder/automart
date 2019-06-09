@@ -8,12 +8,11 @@ class Order {
     create(data) {
         const newOrder = {
             id: this.orders.length + 1,
-            carId: 1,
-            email: data.email || '',
+            carId: data.carId || 0,
             createdOn: moment().format('dddd, MMMM Do YYYY, h:mm:ss a'),
             status: data.status || '',
-            price: 4.567,
-            priceOffered: 3.4569
+            price: data.price || 0,
+            priceOffered: data.priceOffered || 0
         };
         this.orders.push(newOrder);
         return newOrder;
