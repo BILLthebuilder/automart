@@ -34,7 +34,7 @@ class Ads {
         const singleAd = this.getSpecific(id);
         const index = this.ads.indexOf(singleAd);
         this.ads.splice(index, 1);
-        return {};
+        return { id };
     }
 }
 export default new Ads();
