@@ -22,7 +22,7 @@ describe('Purchase Order', () => {
     };
     it('A user Should be able to create a purchase order', () => {
         chai.request(app)
-            .post('/api/v1/car/')
+            .post('/api/v1/order')
             .send(order)
             .end((err, res) => {
                 expect(res.body)
