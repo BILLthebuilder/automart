@@ -80,8 +80,8 @@ describe('Advertisements', () => {
         chai.request(app)
             .delete('/api/v1/car/:id')
             .end((err, res) => {
-                expect(res.body).to.have.a.status(204);
-                expect(res.body.Data).to.be.a('string');
+                expect(res).to.have.a.status(200);
+                expect(res.body).to.be.an('object');
             });
     });
 });
