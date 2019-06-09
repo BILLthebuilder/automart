@@ -64,3 +64,4 @@ typings/
 screenshots/
 .idea/
 .vscode/
+build/
