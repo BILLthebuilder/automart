@@ -73,7 +73,7 @@ ul {
     list-style-type: none;
 }
 
-form input[type="button"] {
+button{
     padding: 0 20px;
     text-align: center;
     line-height: 30px;
@@ -84,8 +84,13 @@ form input[type="button"] {
     border-radius: 5px;
     outline: 0;
     height: 30px;
-    width: 10%;
+    width: 100%;
     font-size: 14pt;
+}
+
+.delete-ad {
+    margin-top: 10px;
+    text-align: center;
 }
 
 form input[type="button"]:hover {
@@ -125,12 +130,6 @@ form input[type="button"]:hover {
 .material-icons {
     font-size: 72px;
     color: #f2f2f2;
-}
-
-.main-description {
-    color: #260957;
-    font-size: 12px;
-    text-align: center;
 }
 
 .featured {
