@@ -235,3 +235,40 @@ input[type="button"]:hover,
 a:hover {
   opacity: 0.9;
 }
+
+/* @media only screen and (max-width: 600px) {
+  .signup form input {
+      width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .signup form input {
+      width: 100%;
+  }
+} */
+
+@media only screen and (max-width: 320px) {
+  header,
+  footer {
+    width: 100%;
+  }
+  .make-model,
+  .year-price {
+    display: flex;
+    margin: 1em;
+    flex-direction: column;
+    justify-content: center;
+  }
+  form input[type="button"] {
+    width: 50%;
+  }
+  .make,
+  .model,
+  .year,
+  .price {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
