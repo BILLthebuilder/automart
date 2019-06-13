@@ -72,3 +72,85 @@ a {
 ul {
     list-style-type: none;
 }
+
+
+.signup {
+    padding: 5px;
+}
+
+.material-icons {
+    font-size: 72px;
+    color: #f2f2f2;
+  }
+
+.firstname,
+.secondname,
+.email,
+.password1,
+.password2,
+.regbutton {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+
+}
+
+.welcomereg,
+.signin {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    flex-direction: column;
+}
+
+
+form input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 0 20px;
+    height: 50px;
+    width: 50%;
+    background-color: #f2f2f2;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
+    border-radius: 5px;
+    outline: 0;
+    transition: all 0.7s ease;
+}
+
+form input[type="submit"] {
+    padding: 0 20px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #f13a59;
+    color: #f2f2f2;
+    cursor: pointer;
+    border: 1px solid #f13a59;
+    border-radius: 5px;
+    outline: 0;
+    height: 30px;
+    font-size: 14pt;
+}
+
+input[type="submit"]:active {
+    transform: translateY(4px);
+}
+
+@media only screen and (max-width: 600px) {
+    .signup form input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .signup form input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .signup form input {
+        width: 100%;
+    }
+}
+
