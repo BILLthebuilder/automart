@@ -20,7 +20,7 @@ describe('User registration', () => {
             isAdmin: true
         }
     };
-    it('An error should be raised due to invalid data for creating a user', done => {
+    it('A user should be able to register', done => {
         chai.request(app)
             .post('/api/v1/auth/signup')
             .send(user)
