@@ -62,3 +62,19 @@ export const adSchema = Joi.object({
         .max(10)
         .required()
 });
+
+export const orderSchema = Joi.object({
+    id: Joi.number(),
+    carId: Joi.number().required(),
+    createdOn: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(200),
+    status: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(10)
+        .required(),
+    price: Joi.number().required(),
+    priceOffered: Joi.number().required()
+});
