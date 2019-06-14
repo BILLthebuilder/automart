@@ -1,13 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import expressValidator from 'express-validator';
-
 import routes from './server/v1/routes/routes';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(expressValidator());
 app.use(routes);
 
 const port = process.env.PORT || 3000;
