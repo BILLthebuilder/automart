@@ -54,6 +54,7 @@ A step by step series of examples that tell you how to get a development environ
     ```
 
 ### The Working API Endpoints
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e8c72a3c6aec23d3251b)
 
 | Request | Endpoint                              | Function                                          |
 | ------- | ------------------------------------- | ------------------------------------------------- |
