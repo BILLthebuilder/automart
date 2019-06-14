@@ -11,7 +11,7 @@ class User {
             email: data.email || '',
             password: data.password || '',
             address: data.address || '',
-            isAdmin: true
+            isAdmin: data.isAdmin
         };
         this.users.push(newUser);
         return newUser;
