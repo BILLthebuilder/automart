@@ -20,30 +20,31 @@ describe('User registration', () => {
             isAdmin: true
         }
     };
-    it('should create a user', () => {
+    it('An error should be raised due to invalid data for creating a user', done => {
         chai.request(app)
             .post('/api/v1/auth/signup')
             .send(user)
             .end((err, res) => {
                 expect(res.body)
-                    .to.have.status(201)
+                    .to.have.status(400)
                     .and.to.be.an('object');
-                expect(res.body.Data).to.have.a.property('id');
-                expect(res.body.Data)
-                    .to.have.a.property('firstName')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('lastName')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('email')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('address')
-                    .and.to.be.a('string');
-                expect(res.body.Data)
-                    .to.have.a.property('isAdmin')
-                    .and.to.be.boolean();
+                expect(res.body).to.have.a.property('error');
+                // expect(res.body.Data)
+                //     .to.have.a.property('firstName')
+                //     .and.to.be.a('string');
+                // expect(res.body.Data)
+                //     .to.have.a.property('lastName')
+                //     .and.to.be.a('string');
+                // expect(res.body.Data)
+                //     .to.have.a.property('email')
+                //     .and.to.be.a('string');
+                // expect(res.body.Data)
+                //     .to.have.a.property('address')
+                //     .and.to.be.a('string');
+                // expect(res.body.Data)
+                //     .to.have.a.property('isAdmin')
+                //     .and.to.be.boolean();
+                done();
             });
     });
 });
