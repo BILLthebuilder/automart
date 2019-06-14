@@ -1,7 +1,17 @@
+import Joi from '@hapi/joi';
 import Ads from '../models/ads';
+import { adSchema } from '../helpers/validations';
 
 const AdvertHandler = {
     create(req, res) {
+        const result = Joi.validate(req.body, adSchema);
+
+        if (result.error) {
+            return res.status(400).json({
+                status: 400,
+                error: result.error.details[0].message
+            });
+        }
         const ad = Ads.create(req.body);
         return res.status(201).json({
             status: 201,

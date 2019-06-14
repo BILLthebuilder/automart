@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi';
 
-const schema = Joi.object({
+export const userSchema = Joi.object({
     id: Joi.number(),
     firstName: Joi.string()
         .alphanum()
@@ -26,18 +26,39 @@ const schema = Joi.object({
     isAdmin: Joi.boolean().required()
 });
 
-// const validated = (req, res) => {
-//     const result = Joi.validate(User.create, schema);
-//     if (!result) {
-//         res.status(400).json({
-//             status: 400,
-//             error: result.error.details[0].message
-//         });
-//     }
-//     return res.status(201).json({
-//         status: 201,
-//         Data: user
-//     });
-// };
-
-export default schema;
+export const adSchema = Joi.object({
+    id: Joi.number(),
+    owner: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(50)
+        .required(),
+    email: Joi.string()
+        .email({ minDomainSegments: 2 })
+        .required(),
+    createdOn: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(200),
+    manufacturer: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(50)
+        .required(),
+    model: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(50)
+        .required(),
+    price: Joi.number().required(),
+    state: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(10)
+        .required(),
+    status: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(10)
+        .required()
+});
