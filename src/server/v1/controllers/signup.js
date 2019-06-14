@@ -1,11 +1,11 @@
 /* eslint-disable class-methods-use-this */
 import Joi from '@hapi/joi';
 import User from '../models/user';
-import schema from '../helpers/validations';
+import { userSchema } from '../helpers/validations';
 
 const RegisterUser = {
     create(req, res) {
-        const result = Joi.validate(req.body, schema);
+        const result = Joi.validate(req.body, userSchema);
 
         if (result.error) {
             return res.status(400).json({
