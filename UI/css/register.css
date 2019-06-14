@@ -55,20 +55,18 @@ input[type="submit"]:active {
     transform: translateY(4px);
 }
 
-@media only screen and (max-width: 600px) {
-    .signup form input {
-        width: 100%;
-    }
-}
 
-@media only screen and (max-width: 500px) {
-    .signup form input {
-        width: 100%;
+@media only screen and (max-width: 425px) {
+    form input[type="submit"],
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"] {
+      width: 100%;
     }
-}
-
-@media only screen and (max-width: 340px) {
-    .signup form input {
-        width: 100%;
-    }
-}
+  }
+  
+  @media only screen and (min-width: 320px){
+      .welcomereg{
+          font-size: 10pt;
+      }
+  }
