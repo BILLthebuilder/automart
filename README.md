@@ -57,7 +57,7 @@ A step by step series of examples that tell you how to get a development environ
 
 | Request | Endpoint                              | Function                                          |
 | ------- | ------------------------------------- | ------------------------------------------------- |
-| POST    | `/api/v1/signup`                      | Register a new user                               |
+| POST    | `/api/v1/auth/signup`                 | Register a new user                               |
 | POST    | `/api/v1/car/`                        | Create a car sale ad                              |
 | GET     | `/api/v1/cars/`                       | Fetch all posted ads                              |
 | POST    | `/api/v1/order/`                      | Create a purchase order                           |
