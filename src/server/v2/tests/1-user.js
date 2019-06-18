@@ -13,14 +13,14 @@ describe('User registration', () => {
         Data: {
             id: 1,
             firstName: 'John',
-            email: 'johndoe@gmail.com',
             lastName: 'Doe',
             password: 'johndoe@123',
+            email: 'johndoe@gmail.com',
             address: '80100122',
-            isAdmin: true
+            isAdmin: false
         }
     };
-    it('A user should be able to register', done => {
+    it('A user should be able to register', () => {
         chai.request(app)
             .post('/api/v1/auth/signup')
             .send(user)
@@ -36,6 +36,9 @@ describe('User registration', () => {
                     .to.have.a.property('lastName')
                     .and.to.be.a('string');
                 expect(res.body.Data)
+                    .to.have.a.property('password')
+                    .and.to.be.a('string');
+                expect(res.body.Data)
                     .to.have.a.property('email')
                     .and.to.be.a('string');
                 expect(res.body.Data)
@@ -44,7 +47,7 @@ describe('User registration', () => {
                 expect(res.body.Data)
                     .to.have.a.property('isAdmin')
                     .and.to.be.boolean();
-                done();
+                // done();
             });
     });
 });
