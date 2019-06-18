@@ -4,6 +4,11 @@ language: node_js
 
 node_js:
     - '10'
+services:
+  - postgresql
+
+before_install:
+  - psql -c 'create database testAutomart' -U postgres
 
 branches:
     only:
