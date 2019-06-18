@@ -1,14 +1,16 @@
+/* eslint-disable no-console */
 import express from 'express';
 import bodyParser from 'body-parser';
-import routes from './server/v1/routes/routes';
+import dotenv from 'dotenv';
+// import routes from './server/v2/routes/routes';
 
+dotenv.config();
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(routes);
+// app.use(routes);
 
-const port = process.env.PORT || 3000;
-// eslint-disable-next-line no-console
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Server running on port ${port}...`));
 
 export default app;
