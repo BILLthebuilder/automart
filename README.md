@@ -1,4 +1,5 @@
 # automart-UI
+
 [![Build Status](https://travis-ci.org/BILLthebuilder/automart.svg?branch=develop)](https://travis-ci.org/BILLthebuilder/automart)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/49ef39d76a524574a1a17377fd577175)](https://www.codacy.com/app/BILLthebuilder/automart?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BILLthebuilder/automart&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/BILLthebuilder/automart/badge.svg?branch=develop)](https://coveralls.io/github/BILLthebuilder/automart?branch=develop)
@@ -14,7 +15,6 @@ The frontend is located on the [gh-pages branch](https://github.com/BILLthebuild
 
 The backend, built with Nodejs and Express is located on the [develop branch](https://github.com/BILLthebuilder/automart/tree/develop)
 
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -23,7 +23,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-* Nodejs/ npm 
+* Nodejs/ npm
   
 * Postman
   
@@ -44,13 +44,15 @@ A step by step series of examples that tell you how to get a development environ
 `npm install`
 
 * To compile and run a production build
+
     ```bash
-      npm start 
+      npm start
     ```
 
 * To run a regular development build
+
     ```bash
-      npm startdev 
+      npm run startdev
     ```
 
 ### The Working API Endpoints
@@ -79,7 +81,9 @@ A step by step series of examples that tell you how to get a development environ
 
 ## Versioning
 
-* This is version 1(v1) of the API which uses data structures to handle user data 
+* Version 1(v1) of the API uses data structures to store data in memory and is located [here](https://github.com/BILLthebuilder/automart/tree/develop/src/server/v1)
+
+* The currently working API is version 2(v2) which uses the Postgresql database to persist data and is located [here](https://github.com/BILLthebuilder/automart/tree/develop/src/server/v2)
 
 ## Authors
 
