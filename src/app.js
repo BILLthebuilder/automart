@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(routes);
 
 const port = process.env.PORT;
