@@ -10,8 +10,8 @@ dotenv.config();
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(routes);
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Server running on port ${port}...`));
