@@ -17,7 +17,7 @@ const ads = {
             !req.body.model ||
             !req.body.bodyType
         ) {
-            return res.status(400).send({ message: 'Some values are missing' });
+            return res.status(400).json({ message: 'Some values are missing' });
         }
         const insert = `INSERT INTO cars (owner, createdOn,state, status, price, manufacturer, 
             model, bodyType, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *`;
@@ -40,6 +40,18 @@ const ads = {
             });
         } catch (error) {
             return res.status(400).json({ error });
+        }
+    },
+    async viewSpecific(req, res) {
+        const viewAll = `SELECT * FROM cars where id=$1`;
+        try {
+            const { rows } = await db.query(viewAll, [req.params.id]);
+            if (!rows[0]) {
+                return res.status(404).json({ message: 'the ad record was not found' });
+            }
+            return res.status(200).json(rows[0]);
+        } catch (error) {
+            return res.status(400).json(error);
         }
     }
 };
