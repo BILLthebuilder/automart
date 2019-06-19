@@ -19,7 +19,7 @@ export const createTables = () => {
     firstName VARCHAR(150) NOT NULL,
     lastName VARCHAR(150) NOT NULL,
     password VARCHAR(150) NOT NULL,
-    email VARCHAR(128) NOT NULL,
+    email VARCHAR(128) UNIQUE NOT NULL,
     address VARCHAR(150) NOT NULL,
     isAdmin BOOL NOT NULL
   ); 
