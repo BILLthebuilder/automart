@@ -6,7 +6,7 @@ import user from '../controllers/userController';
 const routes = Router();
 
 routes.post('/api/v1/auth/signup/', user.signup);
-// routes.post('/api/v1/auth/signin', RegisterUser.create);
+routes.post('/api/v1/auth/signin', user.login);
 // routes.post('/api/v1/car/', AdvertHandler.create);
 // routes.get('/api/v1/cars/', AdvertHandler.getAll);
 // routes.post('/api/v1/order/', OrderHandler.create);
