@@ -122,6 +122,40 @@ const ads = {
         } catch (error) {
             return res.status(400).json({ status: 400, error });
         }
+    },
+    async markSold(req, res) {
+        const carId = parseInt(req.params.id, 10);
+        const findOneCar = 'SELECT * FROM cars WHERE id=$1';
+        try {
+            const { rows } = await db.query(findOneCar, [carId]);
+            if (!rows) {
+                return res.status(404).send({
+                    status: 404,
+                    message: `Car with id ${req.params.id} was not found`
+                });
+            }
+            const sellerId = rows.owner;
+            const carStatus = 'UPDATE cars SET status=$1 WHERE id=$2';
+            const sellerEmail = 'SELECT * FROM users WHERE id=$1';
+            const response = await db.query(carStatus, [req.body.status, carId]);
+            const sellerEmailResponse = await db.query(sellerEmail, [sellerId]);
+            return res.status(200).send({
+                status: 200,
+                message: `Car with id ${req.params.id} is successfully updated`,
+                data: {
+                    id: rows[0].id,
+                    email: rows[0].email,
+                    createdOn: rows[0].createdOn,
+                    manufacturer: rows[0].manufacturer,
+                    model: rows[0].model,
+                    price: rows[0].price,
+                    state: rows[0].state,
+                    status: req.body.status
+                }
+            });
+        } catch (err) {
+            return res.status(400).send(err);
+        }
     }
 };
 
