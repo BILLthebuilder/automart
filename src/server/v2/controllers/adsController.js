@@ -47,11 +47,33 @@ const ads = {
         try {
             const { rows } = await db.query(viewSpecific, [req.params.id]);
             if (!rows[0]) {
-                return res.status(404).json({ message: 'the ad record was not found' });
+                return res.status(404).json({
+                    status: 404,
+                    message: 'the ad record was not found'
+                });
             }
             return res.status(200).json({ Data: rows[0] });
         } catch (error) {
-            return res.status(400).json(error);
+            return res.status(400).json({ status: 404, error });
+        }
+    },
+    async deleteSpecific(req, res) {
+        const carAdId = parseInt(req.params.id, 10);
+        const deleteSpecific = `DELETE FROM cars WHERE id=$1 returning *`;
+        try {
+            const { rows } = await db.query(deleteSpecific, [carAdId]);
+            if (!rows[0]) {
+                return res.status(404).send({
+                    status: 404,
+                    message: `Car  with id ${req.params.id} not found`
+                });
+            }
+            return res.status(200).json({
+                status: 200,
+                message: 'car ad was successfully deleted'
+            });
+        } catch (error) {
+            return res.status(400).json({ status: 404, error });
         }
     },
     async viewAll(req, res) {
@@ -60,7 +82,7 @@ const ads = {
             const { rows } = await db.query(viewAll);
             return res.status(200).json({ Data: rows });
         } catch (error) {
-            return res.status(400).json(error);
+            return res.status(400).json({ status: 404, error });
         }
     }
 };
