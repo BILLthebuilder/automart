@@ -43,13 +43,22 @@ const ads = {
         }
     },
     async viewSpecific(req, res) {
-        const viewAll = `SELECT * FROM cars where id=$1`;
+        const viewSpecific = `SELECT * FROM cars where id=$1`;
         try {
-            const { rows } = await db.query(viewAll, [req.params.id]);
+            const { rows } = await db.query(viewSpecific, [req.params.id]);
             if (!rows[0]) {
                 return res.status(404).json({ message: 'the ad record was not found' });
             }
-            return res.status(200).json(rows[0]);
+            return res.status(200).json({ Data: rows[0] });
+        } catch (error) {
+            return res.status(400).json(error);
+        }
+    },
+    async viewAll(req, res) {
+        const viewAll = `SELECT * FROM cars`;
+        try {
+            const { rows } = await db.query(viewAll);
+            return res.status(200).json({ Data: rows });
         } catch (error) {
             return res.status(400).json(error);
         }
