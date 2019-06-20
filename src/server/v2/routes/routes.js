@@ -15,6 +15,7 @@ routes.get('/api/v2/status/cars', ads.viewUnsold);
 routes.get('/api/v2/cars', ads.viewAll);
 routes.delete('/api/v2/car/:id', ads.deleteSpecific);
 routes.get('/api/v2/range/cars', ads.viewUnsoldPriceRange);
+routes.patch('/api/v2/car/:id/status', ads.markSold);
 
 // Purchase order routes
 routes.post('/api/v2/order/', orders.create);
