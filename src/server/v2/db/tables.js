@@ -34,8 +34,8 @@ export const createTables = () => {
     model VARCHAR(20) NOT NULL,
     bodyType VARCHAR(20) NOT NULL,
     description VARCHAR(150) NOT NULL,
-    picture VARCHAR(150)
-   /* FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE*/
+    picture VARCHAR(150),
+   FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE
   );
   CREATE TABLE IF NOT EXISTS orders(
     id SERIAL PRIMARY KEY,
@@ -50,8 +50,8 @@ export const createTables = () => {
     carId INT NOT NULL,
     createdOn TIMESTAMP NOT NULL,
     reason VARCHAR(100) NOT NULL,
-    description VARCHAR(150) NOT NULL
-    /* FOREIGN KEY (carId) REFERENCES cars(id) ON DELETE CASCADE */
+    description VARCHAR(150) NOT NULL,
+    FOREIGN KEY (carId) REFERENCES cars(id) ON DELETE CASCADE
   )`;
     pool.query(userQuery)
         .then(() => {
