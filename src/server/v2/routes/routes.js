@@ -11,6 +11,6 @@ routes.post('/api/v2/car/', ads.create);
 routes.post('/api/v2/order/', orders.create);
 routes.get('/api/v2/cars/:id', ads.viewSpecific);
 routes.get('/api/v2/cars/', ads.viewAll);
-// routes.delete('/api/v1/car/:id', AdvertHandler.deleteSpecific);
+routes.delete('/api/v1/car/:id', ads.deleteSpecific);
 
 export default routes;
