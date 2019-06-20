@@ -76,6 +76,16 @@ const ads = {
             return res.status(400).json({ status: 404, error });
         }
     },
+    async viewUnsold(req, res) {
+        const value = req.query.status;
+        const viewUnsold = `SELECT * from cars WHERE status = $1`;
+        try {
+            const { rows } = await db.query(viewUnsold, [value]);
+            return res.status(200).json({ Data: rows });
+        } catch (error) {
+            return res.status(400).json({ status: 400, error });
+        }
+    },
     async viewAll(req, res) {
         const viewAll = `SELECT * FROM cars`;
         try {
