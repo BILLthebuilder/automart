@@ -10,7 +10,7 @@ routes.post('/api/v2/auth/signin', user.login);
 routes.post('/api/v2/car/', ads.create);
 routes.post('/api/v2/order/', orders.create);
 routes.get('/api/v2/cars/:id', ads.viewSpecific);
-// routes.get('/api/v2/cars/', AdvertHandler.viewAll);
+routes.get('/api/v2/cars/', ads.viewAll);
 // routes.delete('/api/v1/car/:id', AdvertHandler.deleteSpecific);
 
 export default routes;
