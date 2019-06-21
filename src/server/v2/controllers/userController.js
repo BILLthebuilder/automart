@@ -69,14 +69,14 @@ const user = {
         try {
             const { rows } = await db.query(text, [req.body.email]);
             if (!rows[0]) {
-                return res.status(400).json({
-                    status: 400,
+                return res.status(401).json({
+                    status: 401,
                     error: 'Incorrect credentials, please try again'
                 });
             }
             if (!Helper.comparePassword(rows[0].password, req.body.password)) {
-                return res.status(400).json({
-                    status: 400,
+                return res.status(401).json({
+                    status: 401,
                     error: 'Incorrect credentials, please try again'
                 });
             }

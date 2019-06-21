@@ -45,19 +45,19 @@ const orders = {
         if (foundOrder.rowCount === 0) {
             return res.status(404).send({
                 status: 404,
-                message: `Order with id ${req.params.id} not found`
+                error: `Order with id ${req.params.id} not found`
             });
         }
         if (foundOrder.rows[0].id === 0) {
             return res.status(404).send({
                 status: 404,
-                message: 'A car with that id does not yet exist. Please try again'
+                error: 'A car with that id does not yet exist. Please try again'
             });
         }
         if (foundOrder.rows[0].status !== 'pending') {
             return res.status(400).send({
                 status: 400,
-                message: 'The order must be pending in order to update price'
+                error: 'The order must be pending in order to update price'
             });
         }
         try {

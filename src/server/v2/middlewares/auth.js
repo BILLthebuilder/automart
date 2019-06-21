@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import db from '../db/index';
 
@@ -5,9 +6,9 @@ const Auth = {
     async verifyToken(req, res, next) {
         const token = req.headers['x-access-token'];
         if (!token) {
-            return res.status(400).json({
-                status: 400,
-                error: 'The token is not provided'
+            return res.status(401).json({
+                status: 401,
+                error: 'No access token provided'
             });
         }
         try {
@@ -15,8 +16,8 @@ const Auth = {
             const getUser = 'SELECT * FROM users WHERE id = $1';
             const { rows } = await db.query(getUser, [decoded.userId]);
             if (!rows[0]) {
-                return res.status(400).json({
-                    status: 400,
+                return res.status(401).json({
+                    status: 401,
                     error: 'Invalid access token!!'
                 });
             }
