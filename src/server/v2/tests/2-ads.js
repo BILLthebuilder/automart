@@ -24,47 +24,58 @@ describe('Advertisements', () => {
             status: 'avalable'
         }
     };
-    it('A user Should be able to create a car sale ad', () => {
+    it('A user Should be able to create a car sale ad', done => {
         chai.request(app)
             .post('/api/v2/car/')
             .send(ad)
             .end((err, res) => {
                 expect(res.body).to.be.an('object');
             });
+        done();
     });
-    it('A user should be able to view all posted ads', () => {
+    it('A user should be able to view all posted ads', done => {
         chai.request(app)
             .get('/api/v2/cars/')
             .end((err, res) => {
-                expect(res.body).to.be.an('object');
+                expect(res.body)
+                    .to.have.a.status(200)
+                    .and.to.be.an('object');
+                expect(res.body.Data).to.be.an('array');
             });
+        done();
     });
-    it('A user should be able to view a specific car ad', () => {
+    it('A user should be able to view a specific car ad', done => {
         chai.request(app)
             .get('/api/v2/car/:id')
             .end((err, res) => {
                 expect(res.body).to.be.an('object');
             });
+        done();
     });
-    it('A user should be able to view all unsold car ads', () => {
+    it('A user should be able to view all unsold car ads', done => {
         chai.request(app)
-            .get('/api/v2/status/cars')
+            .get('api/v2/status/cars?status=available')
             .end((err, res) => {
                 expect(res.body).to.be.an('object');
+                expect(res.body.Data).to.be.an('array');
+                expect(res.body.Data).to.have.a.status(200);
             });
+        done();
     });
-    it('A user should be able to view all unsold car ads by price range', () => {
+    it('A user should be able to view all unsold car ads by price range', done => {
         chai.request(app)
             .get('/api/v2/range/cars')
             .end((err, res) => {
-                expect(res.body).to.be.an('object');
+                expect(res.body.Data).to.have.a.status(200);
             });
+        done();
     });
-    it('A user should be able to delete a specific car ad', () => {
+    it('A user should be able to delete a specific car ad', done => {
         chai.request(app)
             .delete('/api/v2/car/:id')
             .end((err, res) => {
                 expect(res.body).to.be.an('object');
             });
+        done();
     });
 });
