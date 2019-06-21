@@ -19,4 +19,5 @@ routes.patch('/api/v2/car/:id/status', ads.markSold);
 
 // Purchase order routes
 routes.post('/api/v2/order/', orders.create);
+routes.patch('/api/v2/:id/price', orders.updatePrice);
 export default routes;

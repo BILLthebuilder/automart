@@ -39,11 +39,12 @@ export const createTables = () => {
   );
   CREATE TABLE IF NOT EXISTS orders(
     id SERIAL PRIMARY KEY,
-    buyerId INT NOT NULL,
     carId INT NOT NULL,
     createdOn TIMESTAMP,
-    amount INT NOT NULL,
-    status VARCHAR(20) NOT NULL
+    status VARCHAR(20) NOT NULL,
+    price INT NOT NULL,
+    priceOffered INT NOT NULL,
+    FOREIGN KEY (carId) REFERENCES cars(id) ON DELETE CASCADE
   );
   CREATE TABLE IF NOT EXISTS flags(
     id SERIAL PRIMARY KEY,
