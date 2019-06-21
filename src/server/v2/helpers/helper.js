@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const Auth = {
+const Helper = {
     hashPassword(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     },
@@ -23,4 +23,4 @@ const Auth = {
     }
 };
 
-export default Auth;
+export default Helper;
