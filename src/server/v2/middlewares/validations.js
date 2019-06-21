@@ -26,6 +26,15 @@ export const userSchema = Joi.object({
     isAdmin: Joi.boolean().required()
 });
 
+export const userLoginSchema = Joi.object({
+    email: Joi.string()
+        .email({ minDomainSegments: 2 })
+        .required(),
+    password: Joi.string()
+        .regex(/^[a-zA-Z0-9]{3,30}$/)
+        .required()
+});
+
 export const adSchema = Joi.object({
     id: Joi.number(),
     owner: Joi.number().required(),
