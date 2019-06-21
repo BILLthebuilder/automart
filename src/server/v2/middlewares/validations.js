@@ -28,18 +28,22 @@ export const userSchema = Joi.object({
 
 export const adSchema = Joi.object({
     id: Joi.number(),
-    owner: Joi.string()
-        .alphanum()
-        .min(3)
-        .max(50)
-        .required(),
-    email: Joi.string()
-        .email({ minDomainSegments: 2 })
-        .required(),
+    owner: Joi.number().required(),
     createdOn: Joi.string()
         .alphanum()
         .min(3)
         .max(200),
+    state: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(10)
+        .required(),
+    status: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(10)
+        .required(),
+    price: Joi.number().required(),
     manufacturer: Joi.string()
         .alphanum()
         .min(3)
@@ -50,16 +54,14 @@ export const adSchema = Joi.object({
         .min(3)
         .max(50)
         .required(),
-    price: Joi.number().required(),
-    state: Joi.string()
+    bodyType: Joi.string()
         .alphanum()
         .min(3)
-        .max(10)
+        .max(50)
         .required(),
-    status: Joi.string()
-        .alphanum()
+    description: Joi.string()
         .min(3)
-        .max(10)
+        .max(50)
         .required()
 });
 
