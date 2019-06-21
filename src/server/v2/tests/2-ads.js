@@ -44,14 +44,14 @@ describe('Advertisements', () => {
             });
         done();
     });
-    it('A user should be able to view a specific car ad', done => {
-        chai.request(app)
-            .get('/api/v2/car/:id')
-            .end((err, res) => {
-                expect(res.body).to.be.an('object');
-            });
-        done();
-    });
+//     it('A user should be able to view a specific car ad', done => {
+//         chai.request(app)
+//             .get('/api/v2/car/:id')
+//             .end((err, res) => {
+//                 expect(res.body).to.be.an('object');
+//             });
+//         done();
+//     });
     // it('A user should be able to view all unsold car ads', done => {
     //     chai.request(app)
     //         .get('api/v2/status/cars?status=available')
