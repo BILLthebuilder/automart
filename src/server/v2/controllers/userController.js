@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import Joi from '@hapi/joi';
 import '@babel/polyfill';
 import db from '../db/index';
-import Auth from '../helpers/auth';
+import Helper from '../helpers/helper';
 import { userSchema, userLoginSchema } from '../middlewares/validations';
 
 dotenv.config();
@@ -17,7 +17,7 @@ const user = {
                 error: error.details[0].message
             });
         }
-        const hashPassword = Auth.hashPassword(req.body.password);
+        const hashPassword = Helper.hashPassword(req.body.password);
         const insert = `INSERT INTO users (firstName, lastName, password, email, 
             address, isAdmin) VALUES ($1, $2, $3, $4, $5, $6) returning *`;
         const results = [
@@ -30,7 +30,7 @@ const user = {
         ];
         try {
             const { rows } = await db.query(insert, results);
-            const token = Auth.generateToken(rows[0].id);
+            const token = Helper.generateToken(rows[0].id);
             const Data = {
                 token,
                 id: rows[0].id,
@@ -74,13 +74,13 @@ const user = {
                     error: 'Incorrect credentials, please try again'
                 });
             }
-            if (!Auth.comparePassword(rows[0].password, req.body.password)) {
+            if (!Helper.comparePassword(rows[0].password, req.body.password)) {
                 return res.status(400).json({
                     status: 400,
                     error: 'Incorrect credentials, please try again'
                 });
             }
-            const token = Auth.generateToken(rows[0].id);
+            const token = Helper.generateToken(rows[0].id);
             return res.status(200).json({
                 status: 200,
                 token,
