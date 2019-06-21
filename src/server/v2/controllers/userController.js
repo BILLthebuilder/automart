@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 import Joi from '@hapi/joi';
 import '@babel/polyfill';
 import db from '../db/index';
-import Auth from '../helpers/auth';
-import { userSchema } from '../middlewares/validations';
+import Helper from '../helpers/helper';
+import { userSchema, userLoginSchema } from '../middlewares/validations';
 
 dotenv.config();
 const user = {
@@ -17,10 +17,7 @@ const user = {
                 error: error.details[0].message
             });
         }
-        if (!Auth.isValidEmail(req.body.email)) {
-            return res.status(400).send({ message: 'Please enter a valid email address' });
-        }
-        const hashPassword = Auth.hashPassword(req.body.password);
+        const hashPassword = Helper.hashPassword(req.body.password);
         const insert = `INSERT INTO users (firstName, lastName, password, email, 
             address, isAdmin) VALUES ($1, $2, $3, $4, $5, $6) returning *`;
         const results = [
@@ -33,47 +30,67 @@ const user = {
         ];
         try {
             const { rows } = await db.query(insert, results);
-            const token = Auth.generateToken(rows[0].id);
+            const token = Helper.generateToken(rows[0].id);
+            const Data = {
+                token,
+                id: rows[0].id,
+                firstName: rows[0].firstName,
+                lastName: rows[0].lastName,
+                email: rows[0].email,
+                address: rows[0].address,
+                isAdmin: false
+            };
             return res.status(201).json({
                 status: 201,
-                token,
-                Data: rows[0]
+                Data
             });
         } catch (error) {
             if (error.routine === '_bt_check_unique') {
-                return res.status(400).send({ message: ' A User with that EMAIL already exists' });
+                return res.status(400).send({
+                    status: 400,
+                    error: ' A User with that EMAIL already exists'
+                });
             }
-            return res.status(400).json({ error });
+            return res.status(400).json({
+                status: 400,
+                error: error.message
+            });
         }
     },
     async login(req, res) {
-        if (!req.body.password || !req.body.email) {
-            return res.status(400).json({ message: 'Email or password is missing, try again' });
-        }
-        if (!Auth.isValidEmail(req.body.email)) {
-            return res.status(400).json({ message: 'Please enter a valid email address' });
-        }
-
-        if (!Auth.isValidEmail(req.body.email)) {
-            return res.status(400).json({ message: 'Please enter a valid email address' });
+        const { error } = Joi.validate(req.body, userLoginSchema);
+        if (error) {
+            return res.status(400).json({
+                status: 400,
+                error: error.details[0].message
+            });
         }
         const text = 'SELECT * FROM users WHERE email = $1';
         try {
             const { rows } = await db.query(text, [req.body.email]);
             if (!rows[0]) {
-                return res.status(400).json({ message: 'Incorrect credentials, please try again' });
+                return res.status(401).json({
+                    status: 401,
+                    error: 'Incorrect credentials, please try again'
+                });
             }
-            if (!Auth.comparePassword(rows[0].password, req.body.password)) {
-                return res.status(400).json({ message: 'Incorrect credentials, please try again' });
+            if (!Helper.comparePassword(rows[0].password, req.body.password)) {
+                return res.status(401).json({
+                    status: 401,
+                    error: 'Incorrect credentials, please try again'
+                });
             }
-            const token = Auth.generateToken(rows[0].id);
+            const token = Helper.generateToken(rows[0].id);
             return res.status(200).json({
                 status: 200,
                 token,
-                Data: rows[0]
+                Data: rows[0].email
             });
         } catch (error) {
-            return res.status(400).send(error);
+            return res.status(400).json({
+                status: 400,
+                error: error.message
+            });
         }
     }
 };

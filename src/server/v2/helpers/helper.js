@@ -1,7 +1,9 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
-const Auth = {
+dotenv.config();
+const Helper = {
     hashPassword(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     },
@@ -9,11 +11,6 @@ const Auth = {
     comparePassword(hashPassword, password) {
         return bcrypt.compareSync(password, hashPassword);
     },
-
-    isValidEmail(email) {
-        return /\S+@\S+\.\S+/.test(email);
-    },
-
     generateToken(id) {
         const token = jwt.sign(
             {
@@ -26,4 +23,4 @@ const Auth = {
     }
 };
 
-export default Auth;
+export default Helper;
