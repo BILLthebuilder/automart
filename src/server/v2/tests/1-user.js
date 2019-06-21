@@ -25,7 +25,10 @@ describe('User registration', () => {
             .post('/api/v2/auth/signup')
             .send(user)
             .end((err, res) => {
-                expect(res.body).to.be.an('object');
+                expect(res.body)
+                    .to.have.status(400)
+                    .and.to.be.an('object');
+                expect(res.body).to.have.a.property('error');
             });
     });
 });
