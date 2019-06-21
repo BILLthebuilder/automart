@@ -80,7 +80,17 @@ const ads = {
         const viewAll = `SELECT * FROM cars`;
         try {
             const { rows } = await db.query(viewAll);
-            return res.status(200).json({ Data: rows });
+            if (!rows[0]) {
+                return res.status(404).send({
+                    status: 404,
+                    message: 'No ad records found',
+                    Data: []
+                });
+            }
+            return res.status(200).json({
+                status: 200,
+                Data: rows
+            });
         } catch (error) {
             return res.status(400).json({ status: 404, error });
         }
@@ -158,6 +168,38 @@ const ads = {
             return res.status(400).json({
                 status: 400,
                 error: err.message
+            });
+        }
+    },
+    async updatePrice(req, res) {
+        const adId = parseInt(req.params.id, 10);
+        const findAd = 'SELECT * FROM cars where id=$1';
+        const foundAd = await db.query(findAd, [adId]);
+        if (foundAd.rowCount === 0) {
+            return res.status(404).send({
+                status: 404,
+                message: `The ad with id ${req.params.id} was not found`
+            });
+        }
+        try {
+            return res.status(200).send({
+                status: 200,
+                message: `Adver with id ${req.params.id} is successfully updated`,
+                data: {
+                    id: foundAd.rows[0].id,
+                    email: foundAd.rows[0].email,
+                    createdOn: foundAd.rows[0].createdOn,
+                    manufacturer: foundAd.rows[0].manufacturer,
+                    model: foundAd.rows[0].model,
+                    price: req.body.price,
+                    state: foundAd.rows[0].state,
+                    status: req.body.status
+                }
+            });
+        } catch (error) {
+            return res.status(400).send({
+                status: 400,
+                error: error.message
             });
         }
     }
