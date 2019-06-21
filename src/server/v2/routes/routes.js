@@ -7,8 +7,8 @@ import Auth from '../middlewares/auth';
 const routes = Router();
 const tokenVerify = Auth.verifyToken;
 // Auth routes
-routes.post('/api/v2/auth/signup/', tokenVerify, user.signup);
-routes.post('/api/v2/auth/signin', tokenVerify, user.login);
+routes.post('/api/v2/auth/signup/', user.signup);
+routes.post('/api/v2/auth/signin', user.login);
 
 // Car advert routes
 routes.post('/api/v2/car/', tokenVerify, ads.create);
