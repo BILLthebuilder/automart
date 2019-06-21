@@ -49,7 +49,7 @@ const ads = {
             if (!rows[0]) {
                 return res.status(404).json({
                     status: 404,
-                    message: 'the ad record was not found'
+                    error: 'the ad record was not found'
                 });
             }
             return res.status(200).json({ Data: rows[0] });
@@ -65,12 +65,12 @@ const ads = {
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
-                    message: `Car  with id ${req.params.id} not found`
+                    error: `Car  with id ${req.params.id} not found`
                 });
             }
             return res.status(200).json({
                 status: 200,
-                message: 'car ad was successfully deleted'
+                error: 'car ad was successfully deleted'
             });
         } catch (error) {
             return res.status(400).json({ status: 404, error });
@@ -83,8 +83,7 @@ const ads = {
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
-                    message: 'No ad records found',
-                    Data: []
+                    error: 'No advert records found'
                 });
             }
             return res.status(200).json({
@@ -103,8 +102,7 @@ const ads = {
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
-                    message: 'All cars have been sold, please try again',
-                    Data: []
+                    error: 'All cars have been sold, please try again'
                 });
             }
             return res.status(200).json({
@@ -127,8 +125,7 @@ const ads = {
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
-                    message: 'Please try a different range',
-                    Data: []
+                    error: 'Please try a different range'
                 });
             }
             return res.status(200).json({
@@ -178,13 +175,13 @@ const ads = {
         if (foundAd.rowCount === 0) {
             return res.status(404).send({
                 status: 404,
-                message: `The ad with id ${req.params.id} was not found`
+                error: `The ad with id ${req.params.id} was not found`
             });
         }
         try {
             return res.status(200).send({
                 status: 200,
-                message: `Adver with id ${req.params.id} is successfully updated`,
+                error: `Advert with id ${req.params.id} is successfully updated`,
                 data: {
                     id: foundAd.rows[0].id,
                     email: foundAd.rows[0].email,
