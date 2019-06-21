@@ -1,20 +1,21 @@
+/* eslint-disable no-shadow */
 /* eslint-disable class-methods-use-this */
 import dotenv from 'dotenv';
+import Joi from '@hapi/joi';
 import '@babel/polyfill';
 import db from '../db/index';
 import Auth from '../helpers/auth';
+import { userSchema } from '../middlewares/validations';
 
 dotenv.config();
 const user = {
     async signup(req, res) {
-        if (
-            !req.body.firstName ||
-            !req.body.lastName ||
-            !req.body.password ||
-            !req.body.email ||
-            !req.body.address
-        ) {
-            return res.status(400).send({ message: 'Some values are missing' });
+        const { error } = Joi.validate(req.body, userSchema);
+        if (error) {
+            return res.status(400).json({
+                status: 400,
+                error: error.details[0].message
+            });
         }
         if (!Auth.isValidEmail(req.body.email)) {
             return res.status(400).send({ message: 'Please enter a valid email address' });
