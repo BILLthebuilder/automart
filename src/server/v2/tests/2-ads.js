@@ -37,18 +37,16 @@ describe('Advertisements', () => {
         chai.request(app)
             .get('/api/v2/cars/')
             .end((err, res) => {
-                // expect(res.body)
-                //     .to.have.a.status(200)
-                //     .and.to.be.an('object');
-                // expect(res.body.Data).to.be.an('array');
+                expect(res.status).to.equal(404);
                 expect(res.body).to.be.an('object');
             });
         done();
     });
     it('A user should be able to view a specific car ad', done => {
         chai.request(app)
-            .get('/api/v2/car/:id')
+            .get('/api/v2/cars/:id')
             .end((err, res) => {
+                expect(res.status).to.equal(404);
                 expect(res.body).to.be.an('object');
             });
         done();
@@ -57,17 +55,16 @@ describe('Advertisements', () => {
         chai.request(app)
             .get('api/v2/status/cars?status=available')
             .end((err, res) => {
+                expect(res.status).to.equal(404);
                 expect(res.body).to.be.an('object');
-                // expect(res.body.Data).to.be.an('array');
-                // expect(res.body.Data).to.have.a.status(200);
             });
         done();
     });
     it('A user should be able to view all unsold car ads by price range', done => {
         chai.request(app)
-            .get('/api/v2/range/cars')
+            .get('/api/v2/range/cars?status=available&minPrice=0&maxPrice=10')
             .end((err, res) => {
-                // expect(res.body.Data).to.have.a.status(200);
+                expect(res.status).to.equal(404);
                 expect(res.body).to.be.an('object');
             });
         done();
@@ -76,6 +73,7 @@ describe('Advertisements', () => {
         chai.request(app)
             .delete('/api/v2/car/:id')
             .end((err, res) => {
+                expect(res.status).to.equal(404);
                 expect(res.body).to.be.an('object');
             });
         done();
