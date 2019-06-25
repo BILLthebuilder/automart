@@ -3,19 +3,19 @@ sudo: false
 language: node_js
 
 node_js:
-  - '10'
-  services:
-    - postgresql
+    - '10'
+services:
+  - postgresql
 
-    before_install:
-      - psql -c 'create database testAutomart' -U postgres
+before_install:
+  - psql -c 'create database testAutomart' -U postgres
 
-# branches:
-#     only:
-#       - develop
+branches:
+    only:
+      - develop
 
 after_success: 
-  - npm run coverage
+    - npm run coverage
 
-  notifications:
+notifications:
     - email: false
