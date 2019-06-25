@@ -15,7 +15,7 @@ describe('Purchase Order', () => {
             id: 1,
             carId: 1,
             createdOn: '01/01/2019',
-            status: 'avalable/sold',
+            status: 'avalable',
             price: 4.598,
             priceOffered: 3.48
         }
@@ -25,6 +25,7 @@ describe('Purchase Order', () => {
             .post('/api/v2/order/')
             .send(order)
             .end((err, res) => {
+                expect(res.status).to.equal(400);
                 expect(res.body).to.be.an('object');
             });
     });
