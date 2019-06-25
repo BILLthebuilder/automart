@@ -5,17 +5,10 @@ import chai from 'chai';
 import asserttype from 'chai-asserttype';
 import 'chai/register-expect';
 import chaihttp from 'chai-http';
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
 import app from '../../../app';
 
 chai.use(chaihttp);
 chai.use(asserttype);
-dotenv.config();
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
-});
 
 describe('Advertisements', () => {
     const ad = {
