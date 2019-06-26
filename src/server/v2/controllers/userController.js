@@ -3,7 +3,7 @@
 import dotenv from 'dotenv';
 import Joi from '@hapi/joi';
 import '@babel/polyfill';
-import pool from '../db/index';
+import db from '../db/index';
 import Helper from '../helpers/helper';
 import { userSchema, userLoginSchema } from '../middlewares/validations';
 
@@ -29,7 +29,7 @@ const user = {
             false
         ];
         try {
-            const { rows } = await pool.query(insert, results);
+            const { rows } = await db.query(insert, results);
             const token = Helper.generateToken(rows[0].id);
             const Data = {
                 token,
@@ -67,7 +67,7 @@ const user = {
         }
         const text = 'SELECT * FROM users WHERE email = $1';
         try {
-            const { rows } = await pool.query(text, [req.body.email]);
+            const { rows } = await db.query(text, [req.body.email]);
             if (!rows[0]) {
                 return res.status(401).json({
                     status: 401,
