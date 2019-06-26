@@ -24,16 +24,17 @@ describe('Advertisements', () => {
             status: 'avalable'
         }
     };
-    it('A user Should be able to create a car sale ad', done => {
+    it('A user Should not be able to create a car sale ad', done => {
         chai.request(app)
             .post('/api/v2/car/')
             .send(ad)
             .end((err, res) => {
+                expect(res.status).to.equal(400);
                 expect(res.body).to.be.an('object');
             });
         done();
     });
-    it('A user should be able to view all posted ads', done => {
+    it('A user should not be able to view all posted ads', done => {
         chai.request(app)
             .get('/api/v2/cars/')
             .end((err, res) => {
@@ -42,7 +43,7 @@ describe('Advertisements', () => {
             });
         done();
     });
-    it('A user should be able to view a specific car ad', done => {
+    it('A user should not be able to view a specific car ad', done => {
         chai.request(app)
             .get('/api/v2/cars/:id')
             .end((err, res) => {
@@ -51,7 +52,7 @@ describe('Advertisements', () => {
             });
         done();
     });
-    it('A user should be able to view all unsold car ads', done => {
+    it('A user should not be able to view all unsold car ads', done => {
         chai.request(app)
             .get('api/v2/status/cars?status=available')
             .end((err, res) => {
@@ -60,7 +61,7 @@ describe('Advertisements', () => {
             });
         done();
     });
-    it('A user should be able to view all unsold car ads by price range', done => {
+    it('A user should not be able to view all unsold car ads by price range', done => {
         chai.request(app)
             .get('/api/v2/range/cars?status=available&minPrice=0&maxPrice=10')
             .end((err, res) => {
@@ -69,7 +70,7 @@ describe('Advertisements', () => {
             });
         done();
     });
-    it('A user should be able to delete a specific car ad', done => {
+    it('A user should not be able to delete a specific car ad', done => {
         chai.request(app)
             .delete('/api/v2/car/:id')
             .end((err, res) => {

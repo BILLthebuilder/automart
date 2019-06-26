@@ -20,7 +20,7 @@ describe('User registration', () => {
             isAdmin: false
         }
     };
-    it('A user should be able to register', () => {
+    it('A user should not be able to register', () => {
         chai.request(app)
             .post('/api/v2/auth/signup')
             .send(user)

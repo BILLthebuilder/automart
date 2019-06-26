@@ -20,7 +20,7 @@ describe('Purchase Order', () => {
             priceOffered: 3.48
         }
     };
-    it('A user Should be able to create a purchase order', () => {
+    it('A user Should not be able to create a purchase order', () => {
         chai.request(app)
             .post('/api/v2/order/')
             .send(order)

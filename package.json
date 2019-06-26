@@ -19,7 +19,7 @@
         "db": "babel-node ./src/server/v2/db/tables.js createTables",
         "drop": "babel-node ./src/server/v2/db/tables.js dropTables",
         "database": "npm run drop && npm run db",
-        "test": "cross-env NODE_ENV=test npm run database && cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit --require @babel/register ./src/server/v2 --recursive",
+        "test": "npm run database && cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit --require @babel/register ./src/server/v2 --recursive",
         "coverage": "nyc report --reporter=text-lcov | coveralls"
     },
     "repository": {
