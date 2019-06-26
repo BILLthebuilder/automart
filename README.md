@@ -1,9 +1,9 @@
 # automart-UI
 
-[![Build Status](https://travis-ci.org/BILLthebuilder/automart.svg?branch=develop)](https://travis-ci.org/BILLthebuilder/automart)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/49ef39d76a524574a1a17377fd577175)](https://www.codacy.com/app/BILLthebuilder/automart?utm_source=github.com&utm_medium=referral&utm_content=BILLthebuilder/automart&utm_campaign=Badge_Grade)
-[![Coverage Status](https://coveralls.io/repos/github/BILLthebuilder/automart/badge.svg?branch=develop)](https://coveralls.io/github/BILLthebuilder/automart?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ffb1d05cd6ce559cedcb/maintainability)](https://codeclimate.com/github/BILLthebuilder/automart/maintainability)
+![Travis (.org) branch](https://img.shields.io/travis/BILLthebuilder/automart/develop.svg?style=for-the-badge)
+![Codacy branch grade](https://img.shields.io/codacy/grade/49ef39d76a524574a1a17377fd577175/develop.svg?style=for-the-badge)
+![Coveralls github](https://img.shields.io/coveralls/github/BILLthebuilder/automart.svg?style=for-the-badge)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/BILLthebuilder/automart.svg?style=for-the-badge)
 
 ## About
 

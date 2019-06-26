@@ -22,8 +22,8 @@ export const createTables = () => {
     email VARCHAR(128) UNIQUE NOT NULL,
     address VARCHAR(150) NOT NULL,
     isAdmin BOOL NOT NULL
-  ); 
-  CREATE TABLE IF NOT EXISTS cars(
+    ); 
+    CREATE TABLE IF NOT EXISTS cars(
     id SERIAL PRIMARY KEY,
     owner INT NOT NULL,
     createdOn TIMESTAMP,
@@ -35,9 +35,9 @@ export const createTables = () => {
     bodyType VARCHAR(20) NOT NULL,
     description VARCHAR(150) NOT NULL,
     picture VARCHAR(150),
-   FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE
-  );
-  CREATE TABLE IF NOT EXISTS orders(
+    FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE
+    );
+    CREATE TABLE IF NOT EXISTS orders(
     id SERIAL PRIMARY KEY,
     carId INT NOT NULL,
     createdOn TIMESTAMP,
@@ -45,15 +45,15 @@ export const createTables = () => {
     price INT NOT NULL,
     priceOffered INT NOT NULL,
     FOREIGN KEY (carId) REFERENCES cars(id) ON DELETE CASCADE
-  );
-  CREATE TABLE IF NOT EXISTS flags(
+    );
+    CREATE TABLE IF NOT EXISTS flags(
     id SERIAL PRIMARY KEY,
     carId INT NOT NULL,
     createdOn TIMESTAMP NOT NULL,
     reason VARCHAR(100) NOT NULL,
     description VARCHAR(150) NOT NULL,
     FOREIGN KEY (carId) REFERENCES cars(id) ON DELETE CASCADE
-  )`;
+    )`;
     pool.query(userQuery)
         .then(() => {
             console.log('all tables created successfully');
