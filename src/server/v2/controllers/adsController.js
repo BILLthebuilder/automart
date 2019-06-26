@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import Joi from '@hapi/joi';
 import '@babel/polyfill';
 import moment from 'moment';
-import pool from '../db/index';
+import db from '../db/index';
 import { adSchema } from '../middlewares/validations';
 
 // import Auth from '../helpers/auth';
@@ -33,7 +33,7 @@ const ads = {
             req.body.description
         ];
         try {
-            const { rows } = await pool.query(insert, results);
+            const { rows } = await db.query(insert, results);
             return res.status(201).json({
                 status: 201,
                 Data: rows[0]
@@ -45,7 +45,7 @@ const ads = {
     async viewSpecific(req, res) {
         const viewSpecific = `SELECT * FROM cars where id=$1`;
         try {
-            const { rows } = await pool.query(viewSpecific, [req.params.id]);
+            const { rows } = await db.query(viewSpecific, [req.params.id]);
             if (!rows[0]) {
                 return res.status(404).json({
                     status: 404,
@@ -61,7 +61,7 @@ const ads = {
         const carAdId = parseInt(req.params.id, 10);
         const deleteSpecific = `DELETE FROM cars WHERE id=$1 returning *`;
         try {
-            const { rows } = await pool.query(deleteSpecific, [carAdId]);
+            const { rows } = await db.query(deleteSpecific, [carAdId]);
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
@@ -79,7 +79,7 @@ const ads = {
     async viewAll(req, res) {
         const viewAll = `SELECT * FROM cars`;
         try {
-            const { rows } = await pool.query(viewAll);
+            const { rows } = await db.query(viewAll);
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
@@ -98,7 +98,7 @@ const ads = {
         const value = req.query.status;
         const viewUnsold = `SELECT * from cars WHERE status = $1`;
         try {
-            const { rows } = await pool.query(viewUnsold, [value]);
+            const { rows } = await db.query(viewUnsold, [value]);
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
@@ -121,7 +121,7 @@ const ads = {
         const viewUnsoldPriceRange = `SELECT * FROM cars WHERE status=$1 AND price>=$2 AND price<=$3`;
 
         try {
-            const { rows } = await pool.query(viewUnsoldPriceRange, [req.query.status, min, max]);
+            const { rows } = await db.query(viewUnsoldPriceRange, [req.query.status, min, max]);
             if (!rows[0]) {
                 return res.status(404).send({
                     status: 404,
@@ -140,7 +140,7 @@ const ads = {
         const carId = parseInt(req.params.id, 10);
         const findOneCar = 'SELECT * FROM cars WHERE id=$1';
         try {
-            const findCar = await pool.query(findOneCar, [carId]);
+            const findCar = await db.query(findOneCar, [carId]);
             if (findCar.rowCount === 0) {
                 return res.status(404).send({
                     status: 404,
@@ -171,7 +171,7 @@ const ads = {
     async updatePrice(req, res) {
         const adId = parseInt(req.params.id, 10);
         const findAd = 'SELECT * FROM cars where id=$1';
-        const foundAd = await pool.query(findAd, [adId]);
+        const foundAd = await db.query(findAd, [adId]);
         if (foundAd.rowCount === 0) {
             return res.status(404).send({
                 status: 404,

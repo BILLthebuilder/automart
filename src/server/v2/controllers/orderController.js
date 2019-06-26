@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import Joi from '@hapi/joi';
 import '@babel/polyfill';
 import moment from 'moment';
-import pool from '../db/index';
+import db from '../db/index';
 import { orderSchema } from '../middlewares/validations';
 
 dotenv.config();
@@ -26,7 +26,7 @@ const orders = {
             req.body.priceOffered
         ];
         try {
-            const { rows } = await pool.query(insert, results);
+            const { rows } = await db.query(insert, results);
             return res.status(201).json({
                 status: 201,
                 Data: rows[0]
@@ -41,7 +41,7 @@ const orders = {
     async updatePrice(req, res) {
         const OrderId = parseInt(req.params.id, 10);
         const findOrder = 'SELECT * FROM orders where id=$1';
-        const foundOrder = await pool.query(findOrder, [OrderId]);
+        const foundOrder = await db.query(findOrder, [OrderId]);
         if (foundOrder.rowCount === 0) {
             return res.status(404).send({
                 status: 404,
