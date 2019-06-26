@@ -20,7 +20,7 @@ const ads = {
             });
         }
         const insert = `INSERT INTO cars (owner, createdOn,state, status, price, manufacturer, 
-            model, bodyType, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *`;
+        model, bodyType, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *`;
         const results = [
             req.body.owner,
             moment(new Date()),

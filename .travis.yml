@@ -1,5 +1,3 @@
-sudo: false
-
 language: node_js
 
 node_js:
@@ -8,7 +6,7 @@ services:
   - postgresql
 
 before_install:
-  - psql -c 'create database testAutomart' -U postgres
+  - psql -c 'create database automart' -U postgres
 
 branches:
     only:
@@ -19,3 +17,4 @@ after_success:
 
 notifications:
     - email: false
+

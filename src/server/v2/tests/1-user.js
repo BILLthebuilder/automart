@@ -20,9 +20,28 @@ describe('User registration', () => {
             isAdmin: false
         }
     };
-    it('A user should be able to register', () => {
+    it('A user should not be able to register', () => {
         chai.request(app)
             .post('/api/v2/auth/signup')
+            .send(user)
+            .end((err, res) => {
+                expect(res.body)
+                    .to.have.status(400)
+                    .and.to.be.an('object');
+                expect(res.body).to.have.a.property('error');
+            });
+    });
+});
+describe('User Login', () => {
+    const user = {
+        Data: {
+            email: 'johndoe@gmail.com',
+            password: 'johndoe@123'
+        }
+    };
+    it('A user should not be able to log in', () => {
+        chai.request(app)
+            .post('/api/v2/auth/signin')
             .send(user)
             .end((err, res) => {
                 expect(res.body)

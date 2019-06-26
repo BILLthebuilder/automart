@@ -4,17 +4,22 @@
     "description": "an api for an online automobile marketplace",
     "main": "app.js",
     "nyc": {
-        "exclude": ["src/server/v2/helpers/", "src/server/v2/middlewares/","src/server/v2/config/config.js", "src/server/v2/db"]
-      },
+        "exclude": [
+            "src/server/v2/helpers/",
+            "src/server/v2/middlewares/",
+            "src/server/v2/db"
+        ]
+    },
     "scripts": {
         "clean": "rm -rf build && mkdir build",
         "build-babel": "babel -d ./build ./src -s",
         "build": "npm run clean && npm run build-babel",
-        "start": "cross-env NODE_ENV=production npm run db && npm run build && node ./build/app.js",
-        "startdev": "cross-env NODE_ENV=development node_modules/.bin/nodemon src/app.js --exec babel-node",
+        "start": "npm run database && npm run build && node ./build/app.js",
+        "startdev": "node_modules/.bin/nodemon src/app.js --exec babel-node",
         "db": "babel-node ./src/server/v2/db/tables.js createTables",
         "drop": "babel-node ./src/server/v2/db/tables.js dropTables",
-        "test": "nyc --reporter=html --reporter=text mocha --exit --require @babel/register ./src/server/v2 --recursive",
+        "database": "npm run drop && npm run db",
+        "test": "npm run database && nyc --reporter=html --reporter=text mocha --exit --require @babel/register ./src/server/v2 --recursive",
         "coverage": "nyc report --reporter=text-lcov | coveralls"
     },
     "repository": {
