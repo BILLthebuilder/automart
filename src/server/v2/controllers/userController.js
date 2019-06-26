@@ -19,7 +19,7 @@ const user = {
         }
         const hashPassword = Helper.hashPassword(req.body.password);
         const insert = `INSERT INTO users (firstName, lastName, password, email, 
-            address, isAdmin) VALUES ($1, $2, $3, $4, $5, $6) returning *`;
+        address, isAdmin) VALUES ($1, $2, $3, $4, $5, $6) returning *`;
         const results = [
             req.body.firstName,
             req.body.lastName,

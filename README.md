@@ -1,7 +1,7 @@
 # automart-UI
 
 [![Build Status](https://travis-ci.org/BILLthebuilder/automart.svg?branch=develop)](https://travis-ci.org/BILLthebuilder/automart)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/49ef39d76a524574a1a17377fd577175)](https://www.codacy.com/app/BILLthebuilder/automart?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BILLthebuilder/automart&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/49ef39d76a524574a1a17377fd577175)](https://www.codacy.com/app/BILLthebuilder/automart?utm_source=github.com&utm_medium=referral&utm_content=BILLthebuilder/automart&utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/BILLthebuilder/automart/badge.svg?branch=develop)](https://coveralls.io/github/BILLthebuilder/automart?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ffb1d05cd6ce559cedcb/maintainability)](https://codeclimate.com/github/BILLthebuilder/automart/maintainability)
 
@@ -23,74 +23,92 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-* Nodejs/ npm
-  
-* Postman
-  
+-   Nodejs/ npm
+
+-   Postman
+
 ### Installing
 
 A step by step series of examples that tell you how to get a development environment running
 
-* Clone the project repository
-  
+-   Clone the project repository
+
 `git clone https://github.com/BILLthebuilder/automart.git`
 
-* Change the directory
-  
+-   Change the directory
+
 `cd automart`
 
-* Install the dependencies
-  
+-   Install the dependencies
+
 `npm install`
 
-* To compile and run a production build
+-   To compile and run a production build
 
-    ```bash
-      npm start
-    ```
+```bash
+npm start
+```
 
-* To run a regular development build
+-   To run a regular development build
 
-    ```bash
-      npm run startdev
-    ```
+```bash
+npm run startdev
+```
 
 ### The Working API Endpoints
+
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e8c72a3c6aec23d3251b)
 
-| Request | Endpoint                              | Function                                          |
-| ------- | ------------------------------------- | ------------------------------------------------- |
-| POST    | `/api/v1/auth/signup`                 | Register a new user                               |
-| POST    | `/api/v1/car/`                        | Create a car sale ad                              |
-| GET     | `/api/v1/cars/`                       | Fetch all posted ads                              |
-| POST    | `/api/v1/order/`                      | Create a purchase order                           |
-| GET     |  `/api/v1/car/:id`                    | View a specific car ad                            |
-| DELETE  | `/api/v1/car/:id`                     | Delete a specific car ad                          |
-|         |                                       |                                                   |
+#### Auth Endpoints
+
+| Request | Endpoint              | Function                |
+| ------- | --------------------- | ----------------------- |
+| POST    | `/api/v2/auth/signup` | Register a new user     |
+| POST    | `/api/v2/auth/signin` | Login a registered user |
+
+#### Car Advert endpoints
+
+| Request | Endpoint                 | Function                                   |
+| ------- | ------------------------ | ------------------------------------------ |
+| POST    | `/api/v2/car/`           | Create a car                               |
+| POST    | `/api/v2/cars/:id`       | View a specific car ad                     |
+| GET     | `/api/v2/status/cars`    | View all unsold cars                       |
+| GET     | `/api/v2/cars`           | View all cars whether sold or unsold       |
+| GET     | `/api/v2/range/cars`     | View unsold cars at a specific price range |
+| PATCH   | `/api/v2/car/:id/status` | Mark car ad as sold                        |
+| PATCH   | `/api/v2/car/:id/price`  | Update price of a posted car sale ad       |
+| DELETE  | `/api/v2/car/:id`        | Delete a specific car ad                   |
+
+### Purchase order endpoints
+
+| Request | Endpoint                  | Function                         |
+| ------- | ------------------------- | -------------------------------- |
+| POST    | `/api/v2/order`           | Create a purchase order          |
+| PATCH   | `/api/v2/order/:id/price` | Update price of a purchase order |
 
 ## Running the tests
 
-* Run  `npm test`
+-   Run `npm test`
 
 ## Deployment
 
-* The API is deployed [here](https://automart-api.herokuapp.com/) on heroku
+-   The API is deployed [here](https://automart-api.herokuapp.com/) on heroku
 
 ## Built With
 
-* [Express](http://expressjs.com) - The web framework used
+-   [Express](http://expressjs.com) - The web framework used
 
 ## Versioning
 
-* Version 1(v1) of the API uses data structures to store data in memory and is located [here](https://github.com/BILLthebuilder/automart/tree/develop/src/server/v1)
+-   Version 1(v1) of the API uses data structures to store data in memory and is located [here](https://github.com/BILLthebuilder/automart/tree/develop/src/server/v1)
 
-* The currently working API is version 2(v2) which uses the Postgresql database to persist data and is located [here](https://github.com/BILLthebuilder/automart/tree/develop/src/server/v2)
+-   The currently working API is version 2(v2) which uses the Postgresql database to persist data and is located [here](https://github.com/BILLthebuilder/automart/tree/develop/src/server/v2)
 
 ## Authors
 
 ### Bill Kariri
 
-* Initial work : [Bill Kariri](https://github.com/BILLthebuilder)
+-   Initial work : [Bill Kariri](https://github.com/BILLthebuilder)
 
 ## License
 
