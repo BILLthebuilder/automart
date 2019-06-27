@@ -2,6 +2,7 @@ import { Router } from 'express';
 import user from '../controllers/userController';
 import ads from '../controllers/adsController';
 import orders from '../controllers/orderController';
+import flags from '../controllers/flagController';
 import Auth from '../middlewares/auth';
 
 const routes = Router();
@@ -19,6 +20,9 @@ routes.delete('/api/v2/car/:id', tokenVerify, ads.deleteSpecific);
 routes.get('/api/v2/range/cars', tokenVerify, ads.viewUnsoldPriceRange);
 routes.patch('/api/v2/car/:id/status', tokenVerify, ads.markSold);
 routes.patch('/api/v2/car/:id/price', tokenVerify, ads.updatePrice);
+
+// Flagging posted ads routes
+routes.post('/api/v2/flag', tokenVerify, flags.create);
 
 // Purchase order routes
 routes.post('/api/v2/order/', tokenVerify, orders.create);

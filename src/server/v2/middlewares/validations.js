@@ -89,3 +89,21 @@ export const orderSchema = Joi.object({
     price: Joi.number().required(),
     priceOffered: Joi.number().required()
 });
+
+export const flagSchema = Joi.object({
+    id: Joi.number(),
+    carId: Joi.number().required(),
+    createdOn: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(200),
+    reason: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(100)
+        .required(),
+    description: Joi.string()
+        .min(3)
+        .max(150)
+        .required()
+});
