@@ -20,9 +20,11 @@ before_script:
 branches:
     only:
       - develop
+script:
+  - nyc report --reporter=text-lcov
 
-after_success: 
-    - nyc report --reporter=text-lcov | cc-test-reporter
+after_script: 
+  -./cc-test-reporter
 
 notifications:
     - email: false
