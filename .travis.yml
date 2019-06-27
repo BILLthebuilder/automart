@@ -21,11 +21,8 @@ branches:
     only:
       - develop
 
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
 after_success: 
-    - npm run coverage
+    - nyc report --reporter=text-lcov | ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
     - email: false
