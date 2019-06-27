@@ -1,18 +1,20 @@
-env:
-  global:
-    - CC_TEST_REPORTER_ID=d1b965637dd212bcfb76006ec91c972fda53c9b64d06fcb6552a9200183464ff
-
 language: node_js
 
 node_js:
     - '10'
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d1b965637dd212bcfb76006ec91c972fda53c9b64d06fcb6552a9200183464ff
+
 services:
   - postgresql
 
-before_install:
-  - psql -c 'create database automart' -U postgres
+addons:
+  code_climate:
+    repo_token: d1b965637dd212bcfb76006ec91c972fda53c9b64d06fcb6552a9200183464ff
 
 before_script:
+  - psql -c 'create database automart' -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
@@ -21,8 +23,11 @@ branches:
     only:
       - develop
 
-after_script: 
-  -./cc-test-reporter
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+after_success:
+  - npm run coverage
 
 notifications:
     - email: false
