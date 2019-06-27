@@ -22,7 +22,7 @@ branches:
       - develop
 
 after_success: 
-    - nyc report --reporter=text-lcov | ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    - nyc report --reporter=text-lcov | ./cc-test-reporter
 
 notifications:
     - email: false
