@@ -16,7 +16,7 @@ describe('Swagger docs', () => {
             .get('/')
             .end((err, res) => {
                 expect(res.status).to.equal(200);
-                expect(res.body).to.be.a('string');
+                expect(res.body).to.be.an('object');
             });
         done();
     });
