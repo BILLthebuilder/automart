@@ -15,6 +15,7 @@ routes.post('/api/v2/auth/signin', user.login);
 routes.post('/api/v2/car/', tokenVerify, ads.create);
 routes.get('/api/v2/cars/:id', tokenVerify, ads.viewSpecific);
 routes.get('/api/v2/status/cars', tokenVerify, ads.viewUnsold);
+routes.get('/api/v2/status/used', tokenVerify, ads.viewUnsoldUsed);
 routes.get('/api/v2/cars', tokenVerify, ads.viewAll);
 routes.delete('/api/v2/car/:id', tokenVerify, ads.deleteSpecific);
 routes.get('/api/v2/range/cars', tokenVerify, ads.viewUnsoldPriceRange);
