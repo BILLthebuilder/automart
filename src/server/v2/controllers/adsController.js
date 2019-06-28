@@ -113,6 +113,26 @@ const ads = {
             return res.status(400).json({ status: 400, error });
         }
     },
+    async viewUnsoldUsed(req, res) {
+        const value = req.query.status;
+        const value2 = req.query.state;
+        const viewUnsoldUsed = `SELECT * from cars WHERE status = $1 AND state = $2`;
+        try {
+            const { rows } = await db.query(viewUnsoldUsed, [value, value2]);
+            if (!rows[0]) {
+                return res.status(404).send({
+                    status: 404,
+                    error: 'All cars have been sold, please try again'
+                });
+            }
+            return res.status(200).json({
+                status: 200,
+                Data: rows
+            });
+        } catch (error) {
+            return res.status(400).json({ status: 400, error });
+        }
+    },
     async viewUnsoldPriceRange(req, res) {
         const { minPrice, maxPrice } = req.query;
         const min = Math.min(minPrice, maxPrice);
