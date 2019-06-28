@@ -6,8 +6,7 @@
     "nyc": {
         "exclude": [
             "src/server/v2/helpers/",
-            "src/server/v2/middlewares/",
-            "src/server/v2/db"
+            "src/server/v2/db/"
         ]
     },
     "scripts": {
@@ -19,8 +18,8 @@
         "db": "babel-node ./src/server/v2/db/tables.js createTables",
         "drop": "babel-node ./src/server/v2/db/tables.js dropTables",
         "database": "npm run drop && npm run db",
-        "test": "npm run database && nyc --reporter=html --reporter=text mocha --exit --require @babel/register ./src/server/v2 --recursive",
-        "coverage": "nyc report --reporter=text-lcov | coveralls"
+        "test": "npm run database && nyc --reporter=lcov --reporter=text mocha --require @babel/register ./src/server/v2 --recursive --exit",
+        "coverage": "nyc --report lcov | coveralls"
     },
     "repository": {
         "type": "git",
