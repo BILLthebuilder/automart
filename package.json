@@ -3,6 +3,13 @@
     "version": "1.0.0",
     "description": "an api for an online automobile marketplace",
     "main": "app.js",
+    "nyc": {
+        "exclude": [
+            "src/server/v2/helpers/",
+            "src/server/v2/db/",
+            "src/server/v2/middlewares/auth.js"
+        ]
+    },
     "scripts": {
         "clean": "rm -rf build && mkdir build",
         "build-babel": "babel -d ./build ./src -s",
