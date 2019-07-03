@@ -6,8 +6,6 @@ import moment from 'moment';
 import db from '../db/index';
 import { adSchema } from '../middlewares/validations';
 
-// import Auth from '../helpers/auth';
-
 dotenv.config();
 
 const ads = {
