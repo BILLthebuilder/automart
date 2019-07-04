@@ -6,7 +6,8 @@
     "nyc": {
         "exclude": [
             "src/server/v2/helpers/",
-            "src/server/v2/db/"
+            "src/server/v2/db/",
+            "src/server/v2/middlewares/auth.js"
         ]
     },
     "scripts": {
@@ -16,9 +17,10 @@
         "start": "npm run database && npm run build && node ./build/app.js",
         "startdev": "node_modules/.bin/nodemon src/app.js --exec babel-node",
         "db": "babel-node ./src/server/v2/db/tables.js createTables",
+        "tokenGen": "babel-node ./src/server/v2/tests/token.js",
         "drop": "babel-node ./src/server/v2/db/tables.js dropTables",
         "database": "npm run drop && npm run db",
-        "test": "npm run database && nyc --reporter=lcov --reporter=text mocha --require @babel/register ./src/server/v2 --recursive --exit",
+        "test": "npm run database && nyc --reporter=lcov --reporter=text --reporter=html mocha --require @babel/register ./src/server/v2 --recursive --exit",
         "coverage": "nyc --report lcov | coveralls"
     },
     "repository": {
