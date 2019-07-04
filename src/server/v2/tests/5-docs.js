@@ -13,10 +13,9 @@ chai.use(asserttype);
 describe('Swagger docs', () => {
     it('A user should be able to view swagger docs', done => {
         chai.request(app)
-            .get('/')
+            .get('/docs/')
             .end((err, res) => {
                 expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
             });
         done();
     });
