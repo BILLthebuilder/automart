@@ -92,7 +92,7 @@ npm run startdev
 
 ## Deployment
 
-- The API is deployed [here](https://automart-api.herokuapp.com/) on heroku
+- The API is deployed [here](https://automart-api.herokuapp.com/docs) on heroku
 
 ## Built With
 
