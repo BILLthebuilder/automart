@@ -1,0 +1,775 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Automart API",
+      "description": "Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With Auto Mart, users can sell their cars or buy from trusted dealerships or private sellers.",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/BILLthebuilder/automart"
+      }
+    },
+    "basePath": "/api/v2",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "Endpoints for managing users"
+      },
+      {
+        "name": "Cars",
+        "description": "Endpoints for managing car Advertisements"
+      },
+      {
+        "name": "Orders",
+        "description": "Endpoints for managing purchase orders"
+      }
+    ],
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/auth/signup": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Signup a new user",
+          "description": "Register a new user",
+          "parameters": [
+            {
+              "name": "users",
+              "in": "body",
+              "description": "Registering a new user",
+              "schema": {
+                "$ref": "#/definitions/signup"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "success: user registered succesfully"
+            },
+            "400": {
+              "description": "Error: invalid input"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/auth/signin": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Login a registered user",
+          "description": "Login a user",
+          "parameters": [
+            {
+              "name": "users",
+              "in": "body",
+              "description": "An existing user is to be signed In",
+              "schema": {
+                "$ref": "#/definitions/signin"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "success: user successfully loged in"
+            },
+            "400": {
+              "description": "Error: invalid input"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/car": {
+        "post": {
+          "tags": [
+            "Cars"
+          ],
+          "summary": "Post a car sale ad",
+          "description": "A User(seller) can Post a new car",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "type": "string",
+              "description" :"The user generated jwt token",
+              "required":true
+  
+            },
+            {
+              "name": "owner",
+              "in": "formData",
+              "type": "integer",
+              "description": "the owner",
+               "required":true
+            },
+            {
+              "name": "createdOn",
+              "in": "formData",
+              "type": "string",
+              "description": "the date the car ad was created",
+               "required":true
+            },
+            {
+              "name": "state",
+              "in": "formData",
+              "type": "string",
+              "description": "state is either new or used",
+               "required":true
+            },
+            {
+              "name": "status",
+              "in": "formData",
+              "type": "string",
+              "description": "status is either sold or available, default is available",
+               "required":true
+            },
+            {
+              "name": "price",
+              "in": "formData",
+              "type": "integer",
+              "description": "the price of the vehicle",
+               "required":true
+            },
+            {
+              "name": "manufacturer",
+              "in": "formData",
+              "type": "string",
+              "description": "the vehicle manufacturer",
+               "required":true
+            },
+            {
+              "name": "model",
+              "in": "formData",
+              "type": "string",
+              "description": "the model of the car",
+               "required":true
+            },
+            {
+              "name": "bodyType",
+              "in": "formData",
+              "type": "string",
+              "description": "The body type is either a car, truck, trailer, van etc.",
+               "required":true
+            },
+            {
+              "name": "picture",
+              "in": "formData",
+              "type": "file",
+              "description": "a picture of the car ad",
+               "required":false
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "success: The car ad has been created successfully"
+            },
+            "400": {
+              "description": "Error: invalid value"
+            },
+            "401": {
+              "description": "Error: Authentication failed"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Cars"
+          ],
+          "summary": "View all car ads whether sold or unsold",
+          "description": "A user can view all car ads",
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "type": "string",
+              "description" :"The user generated jwt token",
+              "required":true
+  
+            },
+            {
+              "name": "owner",
+              "in": "formData",
+              "type": "integer",
+              "description": "the owner",
+               "required":true
+            },
+            {
+              "name": "createdOn",
+              "in": "formData",
+              "type": "string",
+              "description": "the date the car ad was created",
+               "required":true
+            },
+            {
+              "name": "state",
+              "in": "formData",
+              "type": "string",
+              "description": "state is either new or used",
+               "required":true
+            },
+            {
+              "name": "status",
+              "in": "formData",
+              "type": "string",
+              "description": "status is either sold or available, default is available",
+               "required":true
+            },
+            {
+              "name": "price",
+              "in": "formData",
+              "type": "integer",
+              "description": "the price of the vehicle",
+               "required":true
+            },
+            {
+              "name": "manufacturer",
+              "in": "formData",
+              "type": "string",
+              "description": "the vehicle manufacturer",
+               "required":true
+            },
+            {
+              "name": "model",
+              "in": "formData",
+              "type": "string",
+              "description": "the model of the car",
+               "required":true
+            },
+            {
+              "name": "bodyType",
+              "in": "formData",
+              "type": "string",
+              "description": "The body type is either a car, truck, trailer, van etc.",
+               "required":true
+            },
+            {
+              "name": "picture",
+              "in": "formData",
+              "type": "file",
+              "description": "a picture of the car ad",
+              "required":false
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+                "description": "success: Successfully retrieve a cars"
+              },
+              "404": {
+                "description": "Error: Car not found"
+              },
+              "500": {
+                "description": "Server Error"
+              }
+          }
+        }
+      },
+      "/car/{id}": {
+        "get": {
+          "tags": [
+            "Cars"
+          ],
+          "summary": "View a specific car",
+          "description": "User can view a specific car",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": " Car Id",
+              "required":true,
+              "type":"integer"
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+                "description": "success: Car ad successfully retrieved"
+              },
+              "404": {
+                "description": "Error: No car ad was found"
+              },
+              "500": {
+                "description": "Server Error"
+              }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Cars"
+          ],
+          "summary": "Delete a specific car",
+          "description": "Admin can delete a specific car",
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "description" :"The user generated jwt token",
+              "required":false,
+              "type":"string"
+              
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "description": " Car Id",
+              "required":true,
+              "type":"integer"
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+                "description": "success: car Ad delted successfully"
+              },
+              "404": {
+                "description": "Error: Car ad not found"
+              },
+              "500": {
+                "description": "Server Error"
+              }
+          }
+        }
+      },
+      "/car/{id}/status": {
+        "patch": {
+          "tags": [
+            "Cars"
+          ],
+          "summary": "mark a posted car ad as sold",
+          "description": "A seller can mark his/her posted ad as sold",
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "description" :"The user generated jwt token",
+              "required":false,
+              "type":"string"
+              
+            },
+            {
+              "name":"id",
+              "in": "path",
+              "description" :"car id",
+              "required":true,
+              "type":"integer"
+              
+            },
+            {
+              "name": "new status of car posted",
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/markAsSold"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "success: car ad succesfully marked as sold"
+            },
+            "400": {
+              "description": "Error: invalid value"
+            },
+            "404": {
+              "description": "Error: car ad not found"
+            },
+            "401": {
+              "description": "Error: Authentication failed"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/car/{id}/price": {
+        "patch": {
+          "tags": [
+            "Cars"
+          ],
+          "summary": "Update the price of posted car Ad",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "description" :"The user gerated jwt token",
+              "required":false,
+              "type":"string"
+  
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "description": "car id",
+              "required":true,
+              "type":"integer"
+            },
+            {
+              "name": "new status of car posted",
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/updatePrice"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "success: Car ad price successfully updated"
+            },
+            "404": {
+              "description": "Error: Car ad not found"
+            },
+            "401": {
+              "description": "Error: Authentication failed"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/car/flag": {
+        "post": {
+          "tags": [
+            "Cars"
+          ],
+          "summary": "Flag a posted car ad",
+          "description": "User can be able to flag a car ad",
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "description" :"The user token",
+              "required":false,
+              "type":"string"
+  
+            },
+            {
+              "name": "Flag a car ad",
+              "in": "body",
+              "description": "Flag a car as fraud",
+              "schema": {
+                "$ref": "#/definitions/fraud"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "success: car ad successfully flagged/reported"
+            },
+            "400": {
+              "description": "Error: invalid value"
+            },
+            "401": {
+              "description": "Error: Authentication failed"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/order": {
+        "post": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Make a purchase order",
+          "description": "A Buyer can make a purchase order",
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "description" :"The user generated jwt token",
+              "required":false,
+              "type":"string"
+  
+            },
+            {
+              "name": "purchase order",
+              "in": "body",
+              "description": "Details of a purchase order",
+              "schema": {
+                "$ref": "#/definitions/order"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "success: Purchase order created Successfully"
+            },
+            "400": {
+              "description": "Error: invalid value"
+            },
+            "401": {
+              "description": "Error: Authentication failed"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      },
+      "/order/{id}/price": {
+        "patch": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "update the price of a purchase order",
+          "description": "A Buyer can update the price of his/her purchase order",
+          "parameters": [
+            {
+              "name":"Authorization",
+              "in": "header",
+              "description" :"The user token",
+              "required":false,
+              "type":"string"
+  
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "description": "order id",
+              "required":true,
+              "type":"integer"
+            },
+            {
+              "name": "new price offered",
+              "in": "body",
+              "schema": {
+                "$ref": "#/definitions/updateOrder"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "success: Purchase order price has been sucessfully updated"
+            },
+            "400": {
+              "description": "Error: invalid value"
+            },
+            "404": {
+              "description": "Error: order not found"
+            },
+            "401": {
+              "description": "Error: Authentication failed"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+          }
+        }
+      }
+    },
+    
+    
+    "definitions": {
+      "signup": {
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password",
+          "address",
+          "isAdmin"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "isAdmin": {
+            "type": "boolean"
+          }
+        }
+      },
+      "signin": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "carData": {
+        "required": [
+          "owner",
+          "createdOn",
+          "state",
+          "status",
+          "price",
+          "manufacturer",
+          "model",
+          "bodyType"
+        ],
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "integer"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "createdOn": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "state": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "bodyType": {
+            "type": "string"
+          },
+          "descriptions": {
+            "type": "string"
+          }
+        }
+      },
+      "order": {
+        "required": [
+          "buyerId",
+          "carId",
+          "amount"
+        ],
+        "type": "object",
+        "properties": {
+          "buyerId": {
+            "type": "integer"
+          },
+          "carId": {
+            "type": "integer"
+          },
+          "amount": {
+            "type": "integer"
+          }
+        }
+      },
+      "fraud": {
+        "required": [
+          "carId",
+          "reason",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "carId": {
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "updateOrder": {
+        "required": [
+          "price"
+        ],
+        "properties": {
+          "price": {
+            "type": "integer"
+          }
+        }
+      },
+      "markAsSold": {
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "updatePrice": {
+        "required": [
+          "price"
+        ],
+        "properties": {
+          "price": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
