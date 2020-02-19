@@ -1,0 +1,254 @@
+#details-seller {
+  display: flex;
+  width: 80%;
+  margin-left: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.ad-details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 70%;
+  margin-right: 0%;
+  margin-left: 20%;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ad-heading,
+.ad-price,
+.ad-pics,
+.ad-features {
+  display: flex;
+}
+
+.ad-heading,
+.ad-price,
+.ad-pics {
+  color: #f2f2f2;
+  background-color: #532380;
+  padding: 10px;
+}
+
+.ad-heading,
+.ad-price {
+  flex-direction: column;
+}
+
+.ad-pics {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.ad-heading {
+  border-style: solid;
+  border-color: #532380;
+  border-width: 0.2px;
+}
+
+.ad-overview,
+.ad-features,
+.ad-feature-details,
+dl {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.ad-overview {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 30%;
+  margin-bottom: 3%;
+}
+
+dt {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+dd,
+i {
+  margin-left: 0px;
+  width: 100%;
+}
+
+.material-icons {
+  color: #f2f2f2;
+}
+
+.ad-feature-details li {
+  margin-left: 0px;
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.ad-details h2 {
+  background-color: #532380;
+  color: #f2f2f2;
+  border-style: solid;
+  border-color: #532380;
+  border-width: 0.2px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 5px;
+}
+
+.ad-details p {
+  font-size: 11px;
+  padding-left: 5px;
+}
+
+.ad-features h3 {
+  margin-left: 5%;
+}
+
+.ad-feature-details {
+  list-style-type: none;
+  margin-left: 5%;
+}
+
+.ad-feature-details li::before {
+  content: "\2714";
+  color: #532380;
+  font-weight: bold;
+  display: inline-flex;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/*Contact Form*/
+.contact-seller {
+  margin: 10px;
+}
+
+.buyer-name,
+.buyer-number,
+.buyer-email,
+.buyer-submit,
+.seller-button,
+.contact-seller h2 {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+
+form input[type="text"],
+input[type="email"] {
+  padding: 0 20px;
+  height: 50px;
+  background-color: #f2f2f2;
+  border: 1px solid #e6e6e6;
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  outline: 0;
+  transition: all 0.7s ease;
+}
+
+form input[type="submit"],
+button {
+  padding: 0 20px;
+  text-align: center;
+  line-height: 30px;
+  background-color: #f13a59;
+  color: #f2f2f2;
+  cursor: pointer;
+  border: 1px solid #f13a59;
+  border-radius: 5px;
+  outline: 0;
+  height: 30px;
+  font-size: 14pt;
+}
+
+input[type="submit"]:active,
+button:active {
+  transform: translateY(4px);
+}
+
+.separator {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+@media only screen and (max-width: 425px) {
+  header,
+  footer {
+    width: 100%;
+  }
+  form input[type="button"] {
+    width: 50%;
+  }
+  #details-seller {
+    display: flex;
+    width: 100%;
+    margin-left: 0%;
+    box-shadow: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    flex-direction: column;
+  }
+  .ad-details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 90%;
+    margin-right: 0%;
+    margin-left: 0%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  img {
+    width: 100px;
+    height: 80px;
+  }
+  .separator {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #details-seller {
+    display: flex;
+    width: 100%;
+    margin-left: 0%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    flex-direction: column;
+  }
+  img {
+    width: 200px;
+    height: 100px;
+  }
+  .separator {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #details-seller {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    flex-direction: row;
+  }
+  img {
+    width: 150px;
+    height: 100px;
+  }
+  .separator {
+    display: inline;
+  }
+}
