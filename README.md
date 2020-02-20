@@ -43,6 +43,16 @@ A step by step series of examples that tell you how to get a development environ
 
 `npm install`
 
+- Configure your local environment
+
+```bash
+cp .env.example .env
+```
+
+or
+
+Create a `.env` file and copy details in `.env.example` to the `.env` file you created.
+
 - To compile and run a production build
 
 ```bash
