@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-console */
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
