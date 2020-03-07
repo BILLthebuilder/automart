@@ -1,6 +1,6 @@
 {
-    "name": "automart-api",
-    "version": "1.0.0",
+    "name": "automart",
+    "version": "0.0.1",
     "description": "an api for an online automobile marketplace",
     "main": "app.js",
     "nyc": {
