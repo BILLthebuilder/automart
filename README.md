@@ -1,4 +1,5 @@
 # automart-UI
+https://github.com/BILLthebuilder/automart/workflows/automart/badge.svg
 
 [![Build Status](https://travis-ci.org/BILLthebuilder/automart.svg?branch=develop)](https://travis-ci.org/BILLthebuilder/automart)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/49ef39d76a524574a1a17377fd577175)](https://www.codacy.com/app/BILLthebuilder/automart?utm_source=github.com&utm_medium=referral&utm_content=BILLthebuilder/automart&utm_campaign=Badge_Grade)
