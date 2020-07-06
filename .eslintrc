@@ -1,6 +1,15 @@
 {
-    "extends": ["airbnb-base", "prettier"],
-    "plugins": ["prettier"],
+    "extends": [
+        "airbnb-base",
+        "prettier"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "env": {
+        "node": true,
+        "mocha": true
+    },
     "rules": {
         "no-console": "off",
         "no-underscore-dangle": "off",
@@ -12,9 +21,13 @@
         "no-named-as-default-member": "off",
         "no-named-as-default": "off",
         "import/no-extraneous-dependencies": "off",
+        "no-shadow":"off",
         "func-names": "off",
         "prettier/prettier": [
-            "error"
+            "warn",
+            {
+                "endOfLine": "auto"
+            }
         ]
     }
 }
