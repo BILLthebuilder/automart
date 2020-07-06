@@ -1,15 +1,12 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from '../swagger';
-import routes from './server/v2/routes/routes';
+require('dotenv').config();
+const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
+const routes = require('./server/v2/routes/routes');
 
-dotenv.config();
 const app = express();
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(routes);
 // Documentation
 app.use('/docs/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

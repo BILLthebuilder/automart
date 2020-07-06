@@ -1,12 +1,7 @@
-/* eslint-disable no-shadow */
-import dotenv from 'dotenv';
-import Joi from '@hapi/joi';
-import '@babel/polyfill';
-import moment from 'moment';
-import db from '../db/index';
-import { orderSchema } from '../middlewares/validations';
-
-dotenv.config();
+const Joi = require('@hapi/joi');
+const moment = require('moment');
+const db = require('../db/index');
+const { orderSchema } = require('../middlewares/validations');
 
 const orders = {
     async create(req, res) {
@@ -80,4 +75,4 @@ const orders = {
         }
     }
 };
-export default orders;
+module.exports = orders;

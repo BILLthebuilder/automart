@@ -1,13 +1,10 @@
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
-
-dotenv.config();
+const { Pool } = require('pg');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL
 });
 
-export default {
+const _default = {
     query(text, params) {
         return new Promise((resolve, reject) => {
             pool.query(text, params)
@@ -20,3 +17,4 @@ export default {
         });
     }
 };
+exports.default = _default;

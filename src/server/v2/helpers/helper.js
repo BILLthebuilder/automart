@@ -1,8 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 
-dotenv.config();
 const Helper = {
     hashPassword(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
@@ -23,4 +21,4 @@ const Helper = {
     }
 };
 
-export default Helper;
+module.exports = Helper;

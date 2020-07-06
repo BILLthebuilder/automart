@@ -1,12 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
+const chai = require('chai');
+const asserttype = require('chai-asserttype');
+const chaihttp = require('chai-http');
+const expect = require('chai/register-expect');
+const app = require('../../../app');
 
-import chai from 'chai';
-import asserttype from 'chai-asserttype';
-import 'chai/register-expect';
-import chaihttp from 'chai-http';
-import app from '../../../app';
-import { token, wrongToken } from './token';
+const { token, wrongToken } = require('./token');
 
 chai.use(chaihttp);
 chai.use(asserttype);

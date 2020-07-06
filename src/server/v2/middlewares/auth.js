@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import db from '../db/index';
+const jwt = require('jsonwebtoken');
+const db = require('../db/index');
 
 const Auth = {
     async verifyToken(req, res, next) {
@@ -31,4 +31,4 @@ const Auth = {
     }
 };
 
-export default Auth;
+module.exports = Auth;

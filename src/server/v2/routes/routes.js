@@ -1,11 +1,10 @@
-import { Router } from 'express';
-import user from '../controllers/userController';
-import ads from '../controllers/adsController';
-import orders from '../controllers/orderController';
-import flags from '../controllers/flagController';
-import Auth from '../middlewares/auth';
+const routes = require('express').Router();
+const user = require('../controllers/userController');
+const ads = require('../controllers/adsController');
+const orders = require('../controllers/orderController');
+const flags = require('../controllers/flagController');
+const Auth = require('../middlewares/auth');
 
-const routes = Router();
 const tokenVerify = Auth.verifyToken;
 // Auth routes
 routes.post('/api/v2/auth/signup/', user.signup);
@@ -29,4 +28,4 @@ routes.post('/api/v2/flag', tokenVerify, flags.create);
 routes.post('/api/v2/order/', tokenVerify, orders.create);
 routes.patch('/api/v2/order/:id/price', tokenVerify, orders.updatePrice);
 
-export default routes;
+module.exports = routes;

@@ -1,12 +1,7 @@
-/* eslint-disable no-shadow */
-import dotenv from 'dotenv';
-import Joi from '@hapi/joi';
-import '@babel/polyfill';
-import moment from 'moment';
-import db from '../db/index';
-import { adSchema } from '../middlewares/validations';
-
-dotenv.config();
+const Joi = require('@hapi/joi');
+const moment = require('moment');
+const db = require('../db/index');
+const { adSchema } = require('../middlewares/validations');
 
 const ads = {
     async create(req, res) {
@@ -220,4 +215,4 @@ const ads = {
     }
 };
 
-export default ads;
+module.exports = ads;

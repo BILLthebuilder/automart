@@ -1,6 +1,6 @@
-import Joi from '@hapi/joi';
+const Joi = require('@hapi/joi');
 
-export const userSchema = Joi.object({
+const userSchema = Joi.object({
     id: Joi.number(),
     firstName: Joi.string()
         .alphanum()
@@ -26,7 +26,7 @@ export const userSchema = Joi.object({
     isAdmin: Joi.boolean().required()
 });
 
-export const userLoginSchema = Joi.object({
+const userLoginSchema = Joi.object({
     email: Joi.string()
         .email({ minDomainSegments: 2 })
         .required(),
@@ -35,7 +35,7 @@ export const userLoginSchema = Joi.object({
         .required()
 });
 
-export const adSchema = Joi.object({
+const adSchema = Joi.object({
     id: Joi.number(),
     owner: Joi.number().required(),
     createdOn: Joi.string()
@@ -74,7 +74,7 @@ export const adSchema = Joi.object({
         .required()
 });
 
-export const orderSchema = Joi.object({
+const orderSchema = Joi.object({
     id: Joi.number(),
     carId: Joi.number().required(),
     createdOn: Joi.string()
@@ -90,7 +90,7 @@ export const orderSchema = Joi.object({
     priceOffered: Joi.number().required()
 });
 
-export const flagSchema = Joi.object({
+const flagSchema = Joi.object({
     id: Joi.number(),
     carId: Joi.number().required(),
     createdOn: Joi.string()
@@ -107,3 +107,11 @@ export const flagSchema = Joi.object({
         .max(150)
         .required()
 });
+
+module.exports = {
+    userSchema,
+    userLoginSchema,
+    adSchema,
+    orderSchema,
+    flagSchema
+};

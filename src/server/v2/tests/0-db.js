@@ -1,12 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable import/no-extraneous-dependencies */
-
-import chai from 'chai';
-import 'chai/register-expect';
-import asserttype from 'chai-asserttype';
-import { createTables, dropTables, pool } from '../db/tables';
-import Auth from '../middlewares/auth';
+const chai = require('chai');
+const asserttype = require('chai-asserttype');
+const Auth = require('../middlewares/auth');
+const { createTables, dropTables, pool } = require('../db/tables');
 
 chai.use(asserttype);
 
@@ -29,6 +24,7 @@ describe('Other functions', () => {
 describe('Authentication', () => {
     it('Auth must be a function', () => {
         chai.expect(Auth).to.be.an('object');
+        // eslint-disable-next-line no-unused-expressions
         chai.expect(Auth.verifyToken).to.be.a('function').and.to.not.be.undefined;
     });
 });

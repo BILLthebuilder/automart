@@ -1,13 +1,9 @@
-/* eslint-disable no-shadow */
-/* eslint-disable class-methods-use-this */
-import dotenv from 'dotenv';
-import Joi from '@hapi/joi';
-import '@babel/polyfill';
-import db from '../db/index';
-import Helper from '../helpers/helper';
-import { userSchema, userLoginSchema } from '../middlewares/validations';
+const Joi = require('@hapi/joi');
+const moment = require('moment');
+const db = require('../db/index');
+const { userSchema, userLoginSchema } = require('../middlewares/validations');
+const Helper = require('../helpers/helper');
 
-dotenv.config();
 const user = {
     async signup(req, res) {
         const { error } = Joi.validate(req.body, userSchema);
@@ -94,4 +90,4 @@ const user = {
         }
     }
 };
-export default user;
+module.exports = user;
