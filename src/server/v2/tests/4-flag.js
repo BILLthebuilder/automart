@@ -1,7 +1,8 @@
 const chai = require('chai');
 const asserttype = require('chai-asserttype');
 const chaihttp = require('chai-http');
-const expect = require('chai/register-expect');
+
+const { expect } = chai;
 const app = require('../../../app');
 
 chai.use(chaihttp);
