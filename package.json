@@ -13,11 +13,11 @@
     "scripts": {
         "start": "npm run database && node src/app.js",
         "dev": "nodemon src/app.js ",
-        "db": "node ./src/server/v2/db/tables.js ",
+        "db": "node ./src/server/v2/db/tables.js createTables",
         "tokenGen": "node ./src/server/v2/tests/token.js",
         "drop": "node ./src/server/v2/db/tables.js dropTables",
         "database": "npm run drop && npm run db",
-        "test": "npm run database && nyc --reporter=lcov --reporter=text --reporter=html mocha --require @babel/register ./src/server/v2 --recursive --exit",
+        "test": "npm run database && nyc --reporter=lcov --reporter=text --reporter=html mocha ./src/server/v2 --recursive --exit",
         "coverage": "nyc --report lcov | coveralls"
     },
     "repository": {
@@ -56,7 +56,7 @@
         "eslint-config-prettier": "^4.3.0",
         "eslint-plugin-import": "^2.17.3",
         "eslint-plugin-prettier": "^3.1.0",
-        "mocha": "^6.1.4",
+        "mocha": "^6.2.3",
         "mocha-lcov-reporter": "^1.3.0",
         "nodemon": "^2.0.3",
         "nyc": "^14.1.1",
