@@ -20,7 +20,7 @@
         "sessiondrop": "node ./src/db/tables.js dropSession",
         "session": "npm run sessiondrop && npm run sessioncreate",
         "database": "npm run drop && npm run create",
-        "test": "npm run database && nyc --reporter=lcov --reporter=text --reporter=html mocha ./src/server/v2 --recursive --exit",
+        "test": "npm run database && nyc --reporter=lcov --reporter=text --reporter=html mocha  ./src/tests/*.test.js --exit",
         "coverage": "nyc --report lcov | coveralls"
     },
     "repository": {

@@ -5,7 +5,7 @@ const chaihttp = require('chai-http');
 const { expect } = chai;
 const app = require('../app');
 
-const { token, wrongToken } = require('./token');
+const { token, wrongToken } = require('./token.test');
 
 chai.use(chaihttp);
 chai.use(asserttype);
