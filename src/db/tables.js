@@ -3,12 +3,12 @@ const { Pool } = require('pg');
 const { createAll, sessionCreate, dropAll } = require('./queries');
 
 const pool = new Pool({
-    // connectionString: process.env.DATABASE_URL
-    user: 'postgres',
-    host: 'localhost',
-    database: 'automart',
-    password: 'password',
-    port: 5432
+    connectionString: process.env.DATABASE_URL
+    // user: 'postgres',
+    // host: 'localhost',
+    // database: 'automart',
+    // password: 'password',
+    // port: 5432
 });
 
 pool.on('connect', () => {
