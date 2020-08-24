@@ -23,7 +23,10 @@ const userSchema = Joi.object({
         .min(3)
         .max(50)
         .required(),
-    isAdmin: Joi.boolean().required()
+    role: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(50)
 });
 
 const userLoginSchema = Joi.object({
