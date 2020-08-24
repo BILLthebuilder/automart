@@ -1,6 +1,6 @@
 const Joi = require('@hapi/joi');
 const moment = require('moment');
-const db = require('../db/index');
+const query = require('../db/index');
 const { userSchema, userLoginSchema } = require('../middlewares/validations');
 const Helper = require('../helpers/helper');
 
@@ -15,31 +15,31 @@ const user = {
         }
         const hashPassword = Helper.hashPassword(req.body.password);
         const insert = `INSERT INTO users (firstName, lastName, password, email, 
-        address, isAdmin) VALUES ($1, $2, $3, $4, $5, $6) returning *`;
+        address, role) VALUES ($1, $2, $3, $4, $5, $6) returning *`;
         const results = [
             req.body.firstName,
             req.body.lastName,
             hashPassword,
             req.body.email,
             req.body.address,
-            false
+            'user'
         ];
         try {
-            const { rows } = await db.query(insert, results);
+            const { rows } = await query(insert, results);
             const token = Helper.generateToken(rows[0].id);
-            const Data = {
+            const data = {
                 token,
                 id: rows[0].id,
                 firstName: rows[0].firstName,
                 lastName: rows[0].lastName,
                 email: rows[0].email,
                 address: rows[0].address,
-                isAdmin: false
+                role: rows[0].role
             };
-            return res.status(201).json({
-                status: 201,
-                Data
+            res.status(201).json({
+                data
             });
+            console.log(data);
         } catch (error) {
             if (error.routine === '_bt_check_unique') {
                 return res.status(400).send({
@@ -47,10 +47,11 @@ const user = {
                     error: ' A User with that EMAIL already exists'
                 });
             }
-            return res.status(400).json({
+            res.status(400).json({
                 status: 400,
                 error: error.message
             });
+            console.error(error);
         }
     },
     async login(req, res) {
@@ -63,7 +64,7 @@ const user = {
         }
         const text = 'SELECT * FROM users WHERE email = $1';
         try {
-            const { rows } = await db.query(text, [req.body.email]);
+            const { rows } = await query(text, [req.body.email]);
             if (!rows[0]) {
                 return res.status(401).json({
                     status: 401,
@@ -79,6 +80,7 @@ const user = {
             const token = Helper.generateToken(rows[0].id);
             return res.status(200).json({
                 status: 200,
+                log: console.log(rows[0]),
                 token,
                 Data: rows[0].email
             });
