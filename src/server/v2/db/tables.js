@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+const { createAll, sessionCreate, dropAll } = require('./queries');
 require('dotenv').config();
 
 const pool = new Pool({
@@ -8,49 +9,12 @@ const pool = new Pool({
 pool.on('connect', () => {
     console.log('connected to the db');
 });
+pool.on('error', err => {
+    console.log(err, 'Error connecting to the database');
+});
 function createTables() {
-    const userQuery = `CREATE TABLE IF NOT EXISTS users(
-    id SERIAL PRIMARY KEY,
-    firstName VARCHAR(150) NOT NULL,
-    lastName VARCHAR(150) NOT NULL,
-    password VARCHAR(150) NOT NULL,
-    email VARCHAR(128) UNIQUE NOT NULL,
-    address VARCHAR(150) NOT NULL,
-    isAdmin BOOL NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS cars(
-    id SERIAL PRIMARY KEY,
-    owner INT NOT NULL,
-    createdOn TIMESTAMP,
-    state VARCHAR(51) NOT NULL,
-    status VARCHAR(20) NOT NULL,
-    price INT NOT NULL,
-    manufacturer VARCHAR(20) NOT NULL,
-    model VARCHAR(20) NOT NULL,
-    bodyType VARCHAR(20) NOT NULL,
-    description VARCHAR(150) NOT NULL,
-    picture VARCHAR(150),
-    FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE
-    );
-    CREATE TABLE IF NOT EXISTS orders(
-    id SERIAL PRIMARY KEY,
-    carId INT NOT NULL,
-    createdOn TIMESTAMP,
-    status VARCHAR(20) NOT NULL,
-    price INT NOT NULL,
-    priceOffered INT NOT NULL,
-    FOREIGN KEY (carId) REFERENCES cars(id) ON DELETE CASCADE
-    );
-    CREATE TABLE IF NOT EXISTS flags(
-    id SERIAL PRIMARY KEY,
-    carId INT NOT NULL,
-    createdOn TIMESTAMP NOT NULL,
-    reason VARCHAR(100) NOT NULL,
-    description VARCHAR(150) NOT NULL,
-    FOREIGN KEY (carId) REFERENCES cars(id) ON DELETE CASCADE
-    )`;
-    pool.query(userQuery)
-        .then(() => {
+    pool.query(createAll)
+        .then(res => {
             console.log('all tables created successfully');
             pool.end();
         })
@@ -60,15 +24,21 @@ function createTables() {
         });
 }
 
-function dropTables() {
-    const dropQuery = `DROP TABLE IF EXISTS users CASCADE;
-    DROP TABLE IF EXISTS cars CASCADE;
-    DROP TABLE IF EXISTS orders CASCADE;
-    DROP TABLE IF EXISTS flags CASCADE;
-    `;
+function createSession() {
+    pool.query(sessionCreate)
+        .then(res => {
+            console.log('Session table created successfully');
+            pool.end();
+        })
+        .catch(err => {
+            console.log(err);
+            process.exit(0);
+        });
+}
 
-    pool.query(dropQuery)
-        .then(() => {
+function dropTables() {
+    pool.query(dropAll)
+        .then(res => {
             console.log('all tables dropped successfully');
             pool.end();
         })
@@ -78,10 +48,25 @@ function dropTables() {
         });
 }
 
+function dropSession() {
+    const dropSession = `DROP TABLE IF EXISTS sessions CASCADE`;
+    pool.query(dropSession)
+        .then(res => {
+            console.log('session table dropped successfully');
+            pool.end();
+        })
+        .catch(err => {
+            console.log(err);
+            process.exit(0);
+        });
+}
+
 module.exports = {
+    pool,
     createTables,
     dropTables,
-    pool
+    createSession,
+    dropSession
 };
 
 require('make-runnable');
