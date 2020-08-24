@@ -5,19 +5,19 @@
     "main": "app.js",
     "nyc": {
         "exclude": [
-            "src/server/v2/helpers/",
-            "src/server/v2/db/",
-            "src/server/v2/middlewares/auth.js"
+            "src/helpers/",
+            "src/db/",
+            "src/middlewares/auth.js"
         ]
     },
     "scripts": {
         "start": "npm run database && node src/app.js",
         "dev": "npm run database && nodemon src/app.js ",
-        "create": "node ./src/server/v2/db/tables.js createTables",
-        "tokenGen": "node ./src/server/v2/tests/token.js",
-        "drop": "node ./src/server/v2/db/tables.js dropTables",
-        "sessioncreate": "node ./src/server/v2/db/tables.js createSession",
-        "sessiondrop": "node ./src/server/v2/db/tables.js dropSession",
+        "create": "node ./src/db/tables.js createTables",
+        "tokenGen": "node ./src/tests/token.js",
+        "drop": "node ./src/db/tables.js dropTables",
+        "sessioncreate": "node ./src/db/tables.js createSession",
+        "sessiondrop": "node ./src/db/tables.js dropSession",
         "session": "npm run sessiondrop && npm run sessioncreate",
         "database": "npm run drop && npm run create",
         "test": "npm run database && nyc --reporter=lcov --reporter=text --reporter=html mocha ./src/server/v2 --recursive --exit",

@@ -1,9 +1,14 @@
+require('dotenv').config();
 const { Pool } = require('pg');
 const { createAll, sessionCreate, dropAll } = require('./queries');
-require('dotenv').config();
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
+    // connectionString: process.env.DATABASE_URL
+    user: 'postgres',
+    host: 'localhost',
+    database: 'automart',
+    password: 'password',
+    port: 5432
 });
 
 pool.on('connect', () => {

@@ -3,7 +3,7 @@ const asserttype = require('chai-asserttype');
 const chaihttp = require('chai-http');
 
 const { expect } = chai;
-const app = require('../../../app');
+const app = require('../app');
 
 const { token, wrongToken } = require('./token');
 

@@ -15,6 +15,6 @@ function query(text, params) {
                 reject(err);
             });
     });
-};
+}
 
 module.exports = query;
