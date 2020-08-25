@@ -8,7 +8,6 @@ const orders = {
         const { error } = Joi.validate(req.body, orderSchema);
         if (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.details[0].message
             });
         }
@@ -23,12 +22,10 @@ const orders = {
         try {
             const { rows } = await db.query(insert, results);
             return res.status(201).json({
-                status: 201,
                 Data: rows[0]
             });
         } catch (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.message
             });
         }
@@ -39,25 +36,21 @@ const orders = {
         const foundOrder = await db.query(findOrder, [OrderId]);
         if (foundOrder.rowCount === 0) {
             return res.status(404).send({
-                status: 404,
                 error: `Order with id ${req.params.id} not found`
             });
         }
         if (foundOrder.rows[0].id === 0) {
             return res.status(404).send({
-                status: 404,
                 error: 'A car with that id does not yet exist. Please try again'
             });
         }
         if (foundOrder.rows[0].status !== 'pending') {
             return res.status(400).send({
-                status: 400,
                 error: 'The order must be pending in order to update price'
             });
         }
         try {
             return res.status(200).send({
-                status: 200,
                 message: `Order with id ${req.params.id} is successfully updated`,
                 data: {
                     id: foundOrder.rows[0].id,
@@ -69,7 +62,6 @@ const orders = {
             });
         } catch (error) {
             return res.status(400).send({
-                status: 400,
                 error: error.message
             });
         }

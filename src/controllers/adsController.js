@@ -8,7 +8,6 @@ const ads = {
         const { error } = Joi.validate(req.body, adSchema);
         if (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.details[0].message
             });
         }
@@ -28,7 +27,6 @@ const ads = {
         try {
             const { rows } = await db.query(insert, results);
             return res.status(201).json({
-                status: 201,
                 Data: rows[0]
             });
         } catch (error) {
@@ -41,13 +39,12 @@ const ads = {
             const { rows } = await db.query(viewSpecific, [req.params.id]);
             if (!rows[0]) {
                 return res.status(404).json({
-                    status: 404,
                     error: 'the ad record was not found'
                 });
             }
             return res.status(200).json({ Data: rows[0] });
         } catch (error) {
-            return res.status(400).json({ status: 404, error });
+            return res.status(400).json({ error });
         }
     },
     async deleteSpecific(req, res) {
@@ -57,16 +54,14 @@ const ads = {
             const { rows } = await db.query(deleteSpecific, [carAdId]);
             if (!rows[0]) {
                 return res.status(404).send({
-                    status: 404,
                     error: `Car  with id ${req.params.id} not found`
                 });
             }
             return res.status(200).json({
-                status: 200,
                 error: 'car ad was successfully deleted'
             });
         } catch (error) {
-            return res.status(400).json({ status: 404, error });
+            return res.status(400).json({ error });
         }
     },
     async viewAll(req, res) {
@@ -75,16 +70,14 @@ const ads = {
             const { rows } = await db.query(viewAll);
             if (!rows[0]) {
                 return res.status(404).send({
-                    status: 404,
                     error: 'No advert records found'
                 });
             }
             return res.status(200).json({
-                status: 200,
                 Data: rows
             });
         } catch (error) {
-            return res.status(400).json({ status: 404, error });
+            return res.status(400).json({ error });
         }
     },
     async viewUnsold(req, res) {
@@ -94,16 +87,14 @@ const ads = {
             const { rows } = await db.query(viewUnsold, [value]);
             if (!rows[0]) {
                 return res.status(404).send({
-                    status: 404,
                     error: 'All cars have been sold, please try again'
                 });
             }
             return res.status(200).json({
-                status: 200,
                 Data: rows
             });
         } catch (error) {
-            return res.status(400).json({ status: 400, error });
+            return res.status(400).json({ error });
         }
     },
     async viewUnsoldUsed(req, res) {
@@ -114,16 +105,14 @@ const ads = {
             const { rows } = await db.query(viewUnsoldUsed, [value, value2]);
             if (!rows[0]) {
                 return res.status(404).send({
-                    status: 404,
                     error: 'All cars have been sold, please try again'
                 });
             }
             return res.status(200).json({
-                status: 200,
                 Data: rows
             });
         } catch (error) {
-            return res.status(400).json({ status: 400, error });
+            return res.status(400).json({ error });
         }
     },
     async viewUnsoldPriceRange(req, res) {
@@ -137,16 +126,14 @@ const ads = {
             const { rows } = await db.query(viewUnsoldPriceRange, [req.query.status, min, max]);
             if (!rows[0]) {
                 return res.status(404).send({
-                    status: 404,
                     error: 'Please try a different range'
                 });
             }
             return res.status(200).json({
-                status: 200,
                 Data: rows
             });
         } catch (error) {
-            return res.status(400).json({ status: 400, error });
+            return res.status(400).json({ error });
         }
     },
     async markSold(req, res) {
@@ -156,12 +143,10 @@ const ads = {
             const findCar = await db.query(findOneCar, [carId]);
             if (findCar.rowCount === 0) {
                 return res.status(404).send({
-                    status: 404,
                     message: `Car with id ${req.params.id} was not found`
                 });
             }
             return res.status(200).send({
-                status: 200,
                 message: `Car with id ${req.params.id} is successfully updated`,
                 data: {
                     id: findCar.rows[0].id,
@@ -176,7 +161,6 @@ const ads = {
             });
         } catch (err) {
             return res.status(400).json({
-                status: 400,
                 error: err.message
             });
         }
@@ -187,13 +171,11 @@ const ads = {
         const foundAd = await db.query(findAd, [adId]);
         if (foundAd.rowCount === 0) {
             return res.status(404).send({
-                status: 404,
                 error: `The ad with id ${req.params.id} was not found`
             });
         }
         try {
             return res.status(200).send({
-                status: 200,
                 error: `Advert with id ${req.params.id} is successfully updated`,
                 data: {
                     id: foundAd.rows[0].id,
@@ -208,7 +190,6 @@ const ads = {
             });
         } catch (error) {
             return res.status(400).send({
-                status: 400,
                 error: error.message
             });
         }

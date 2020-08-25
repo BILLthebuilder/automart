@@ -6,7 +6,6 @@ const Auth = {
         const token = req.headers['x-access-token'];
         if (!token) {
             return res.status(401).json({
-                status: 401,
                 error: 'No access token provided'
             });
         }
@@ -16,7 +15,6 @@ const Auth = {
             const { rows } = await db.query(getUser, [decoded.userId]);
             if (!rows[0]) {
                 return res.status(401).json({
-                    status: 401,
                     error: 'Invalid access token!!'
                 });
             }
@@ -24,7 +22,6 @@ const Auth = {
             next();
         } catch (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.message
             });
         }

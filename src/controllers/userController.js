@@ -9,7 +9,6 @@ const user = {
         const { error } = Joi.validate(req.body, userSchema);
         if (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.details[0].message
             });
         }
@@ -30,8 +29,8 @@ const user = {
             const data = {
                 token,
                 id: rows[0].id,
-                firstName: rows[0].firstName,
-                lastName: rows[0].lastName,
+                firstName: rows[0].firstname,
+                lastName: rows[0].lastname,
                 email: rows[0].email,
                 address: rows[0].address,
                 role: rows[0].role
@@ -43,12 +42,10 @@ const user = {
         } catch (error) {
             if (error.routine === '_bt_check_unique') {
                 return res.status(400).send({
-                    status: 400,
                     error: ' A User with that EMAIL already exists'
                 });
             }
             res.status(400).json({
-                status: 400,
                 error: error.message
             });
             console.error(error);
@@ -58,7 +55,6 @@ const user = {
         const { error } = Joi.validate(req.body, userLoginSchema);
         if (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.details[0].message
             });
         }
@@ -67,26 +63,23 @@ const user = {
             const { rows } = await query(text, [req.body.email]);
             if (!rows[0]) {
                 return res.status(401).json({
-                    status: 401,
+                    
                     error: 'Incorrect credentials, please try again'
                 });
             }
             if (!Helper.comparePassword(rows[0].password, req.body.password)) {
                 return res.status(401).json({
-                    status: 401,
+                    
                     error: 'Incorrect credentials, please try again'
                 });
             }
             const token = Helper.generateToken(rows[0].id);
             return res.status(200).json({
-                status: 200,
-                log: console.log(rows[0]),
                 token,
                 Data: rows[0].email
             });
         } catch (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.message
             });
         }

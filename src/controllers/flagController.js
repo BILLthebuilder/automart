@@ -8,7 +8,6 @@ const flags = {
         const { error } = Joi.validate(req.body, flagSchema);
         if (error) {
             return res.status(400).json({
-                status: 400,
                 error: error.details[0].message
             });
         }
@@ -17,7 +16,6 @@ const flags = {
         try {
             const { rows } = await db.query(insert, results);
             return res.status(201).json({
-                status: 201,
                 Data: rows[0]
             });
         } catch (error) {
